@@ -46,6 +46,7 @@ RUN \
         automake \
         cppunit-dev \
         curl-dev \
+	perl-dev \
         file \
         g++ \
         gcc \
@@ -76,6 +77,32 @@ RUN \
 	/usr/share/webapps/rutorrent/plugins/autodl-rutorrent && \
  ln -s \
 	/defaults/conf.php /usr/share/webapps/rutorrent/plugins/autodl-rutorrent/conf.php && \
+
+# install autodl-irssi
+ [[ ! -d /config/.autodl ]] && (mkdir /config/.autodl && chown -R abc:abc /config/.autodl) && \
+ [[ ! -d /home/abc ]] && (mkdir /home/abc && chown -R abc:abc /home/abc) && \
+
+ [[ ! -d /config/.irssi/scripts/.git ]] && (mkdir /config/.irssi && \
+	git clone https://github.com/autodl-community/autodl-irssi.git /config/.irssi/scripts && \
+	mkdir /config/.irssi/scripts/autorun && \
+	ln -s /config/.irssi/scripts/autodl-irssi.pl /config/.irssi/scripts/autorun/autodl-irssi.pl && \
+	chown -R abc:abc /config/.irssi ) && \
+
+ wget --quiet -O /tmp/trackers.zip https://github.com/autodl-community/autodl-trackers/archive/master.zip && \
+ cd /config/.irssi/scripts/AutodlIrssi/trackers && \
+ unzip -q -o -j /tmp/trackers.zip && \
+ rm /tmp/trackers.zip && \
+
+ perl -MCPAN -e 'my $c = "CPAN::HandleConfig"; $c->load(doit => 1, autoconfig => 1); $c->edit(prerequisites_policy => "follow"); $c->edit(build_requires_install_policy => "yes"); $c->commit' && \
+ cpan Archive::Zip Net::SSLeay HTML::Entities XML::LibXML Digest::SHA JSON JSON::XS && \
+
+ cd /usr/share/webapps/rutorrent/plugins/autodl-rutorrent && \
+ git pull && \
+ chown -R abc:abc /usr/share/webapps/rutorrent/plugins/autodl-rutorrent &&\
+
+ cd /config/.irssi/scripts && \
+ git pull && \
+ chown -R abc:abc /config/.irssi && \
 
 # compile mediainfo packages
  curl -o \
