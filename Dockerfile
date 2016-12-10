@@ -23,7 +23,6 @@ RUN \
         nginx \
         rtorrent \
         screen \
-	dtach \
         tar \
         unrar \
         unzip \
@@ -35,6 +34,7 @@ RUN \
 	perl-archive-zip \
 	perl-net-ssleay \
 	perl-digest-sha1 \
+	git \
         zip && \
 
  apk add --no-cache \
@@ -60,7 +60,6 @@ RUN \
         libtool \
         make \
         ncurses-dev \
-	git \
         openssl-dev && \
 
 # install webui

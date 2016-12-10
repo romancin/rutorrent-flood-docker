@@ -1,11 +1,6 @@
-#!/bin/bash
-
-if [ -f "/detach_sess/.irssi" ]; then
-rm -f /detach_sess/.irssi || true
-sleep 1s
-fi
-
-dtach -n /detach_sess/.irssi /sbin/setuser abc /usr/bin/irssi --home=/config/.irssi 1>/dev/null
-
+#!/usr/bin/with-contenv bash
+screen -D -m -S \
+        irssi s6-setuidgid abc /usr/bin/irssi \
+        --home=/config/.irssi
 
 sleep 1s

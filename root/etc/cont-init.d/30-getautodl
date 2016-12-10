@@ -8,7 +8,7 @@
 chown -R abc:abc /usr/share/webapps/rutorrent/plugins/autodl-rutorrent/)
 
 # get autodl script for irssi
-[[ ! -d /config/.irssi/scripts/.git ]] && (mkdir /config/.irssi && \
+[[ ! -d /config/.irssi/scripts/.git ]] && (mkdir -p /config/.irssi/scripts && \
   git clone https://github.com/autodl-community/autodl-irssi.git /config/.irssi/scripts && \
   mkdir /config/.irssi/scripts/autorun && \
   ln -s /config/.irssi/scripts/autodl-irssi.pl /config/.irssi/scripts/autorun/autodl-irssi.pl && \
