@@ -1,8 +1,13 @@
 #!/usr/bin/with-contenv bash
 
-	screen -D -m -S \
-	rtorrent s6-setuidgid abc /usr/bin/rtorrent \
-	-n -o import=/config/rtorrent/rtorrent.rc
+if [ -f "/detach_sess/.rtorrent" ]; then
+rm -f /detach_sess/.rtorrent || true
+sleep 1s
+fi
+
+dtach -n /detach_sess/.rtorrent \
+s6-setuidgid abc /usr/bin/rtorrent \
+-n -o import=/config/rtorrent/rtorrent.rc
 
 until [ -e "/config/rtorrent/rtorrent_sess/rtorrent.lock" ];
 do

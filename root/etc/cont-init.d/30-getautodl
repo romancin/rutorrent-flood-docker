@@ -25,6 +25,15 @@ cd /usr/share/webapps/rutorrent/plugins/autodl-rutorrent/ || exit
 git pull
 chown -R abc:abc /usr/share/webapps/rutorrent/plugins/autodl-rutorrent
 
+# make sure perl is in irssi startup
+echo "load perl" > /config/.irssi/startup
+
+# symlink autodl/irssi folders to root
+ln -s /config/.autodl /root/.autodl
+ln -s /config/.irssi /root/.irssi
+chown -R abc:abc /root/.autodl
+chown -R abc:abc /root/.irssi
+
 # update autodl script for irssi
 cd /config/.irssi/scripts || exit
 git pull

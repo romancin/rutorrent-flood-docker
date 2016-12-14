@@ -22,12 +22,13 @@ RUN \
         logrotate \
         nginx \
         rtorrent \
-        screen \
+	dtach \
         tar \
         unrar \
         unzip \
         wget \
 	irssi \
+	irssi-perl \
 	zlib \
 	zlib-dev \
 	libxml2-dev \
