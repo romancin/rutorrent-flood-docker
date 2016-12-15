@@ -9,6 +9,6 @@ rm -f /detach_sess/.irssi || true
 sleep 1s
 fi
 
-dtach -n /detach_sess/.irssi s6-setuidgid abc /usr/bin/irssi --home=/config/.irssi 1>/dev/null
+HOME=/config;dtach -n /detach_sess/.irssi s6-setuidgid abc /usr/bin/irssi --home=/config/.irssi 1>/dev/null
 
 sleep 1s
