@@ -1,7 +1,5 @@
 FROM lsiobase/alpine
 
-MAINTAINER xeroxmalf
-
 # set version label
 ARG BUILD_DATE
 ARG VERSION
