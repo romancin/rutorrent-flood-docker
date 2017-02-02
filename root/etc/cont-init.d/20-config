@@ -23,9 +23,6 @@ cd "${PREV_DIR}" || exit
 [[ ! -e /config/nginx/nginx.conf ]] && \
 	cp /defaults/nginx.conf /config/nginx/nginx.conf
 
-[[ ! -d /config/nginx/conf.d ]] && \
-	cp /defaults/conf.d/* /config/nginx/conf.d/
-
 [[ ! -e /config/rtorrent/rtorrent.rc ]] && \
 	cp /defaults/rtorrent.rc /config/rtorrent/rtorrent.rc
 cp -pr /config/rutorrent/settings/* /usr/share/webapps/rutorrent/conf/

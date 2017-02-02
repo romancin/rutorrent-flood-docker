@@ -36,6 +36,7 @@ RUN \
 	perl-net-ssleay \
 	perl-digest-sha1 \
 	git \
+	openssl \
         zip && \
 
  apk add --no-cache \
@@ -61,7 +62,6 @@ RUN \
         libtool \
         make \
         ncurses-dev \
-	openssl \
         openssl-dev && \
 
 # install webui

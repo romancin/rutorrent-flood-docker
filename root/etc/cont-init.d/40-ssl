@@ -22,3 +22,8 @@ then
   -out "/config/nginx/cert.pem" \
   -days 3650 -nodes -sha256
 fi
+
+if [ ! -e "/config/nginx/conf.d/basic.conf" ] || [ ! -e "/config/nginx/conf.d/ssl.conf" ]
+then
+ cp /defaults/conf.d/* /config/nginx/conf.d/
+fi
