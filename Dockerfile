@@ -61,6 +61,7 @@ RUN \
         libtool \
         make \
         ncurses-dev \
+	openssl \
         openssl-dev && \
 
 # install webui
