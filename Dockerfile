@@ -68,12 +68,8 @@ RUN \
  mkdir -p \
         /usr/share/webapps/rutorrent \
         /defaults/rutorrent-conf && \
- curl -o \
- /tmp/rutorrent.tar.gz -L \
-        "https://github.com/Novik/ruTorrent/archive/master.tar.gz" && \
- tar xf \
- /tmp/rutorrent.tar.gz -C \
-        /usr/share/webapps/rutorrent --strip-components=1 && \
+ git clone https://github.com/Novik/ruTorrent.git \
+        /usr/share/webapps/rutorrent/ && \
  mv /usr/share/webapps/rutorrent/conf/* \
         /defaults/rutorrent-conf/ && \
  rm -rf \
