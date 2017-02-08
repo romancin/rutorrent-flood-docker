@@ -6,7 +6,7 @@ sleep 1s
 fi
 
 dtach -n /detach_sess/.rtorrent \
-s6-setuidgid abc /usr/bin/rtorrent \
+s6-setuidgid abc /usr/local/bin/rtorrent \
 -n -o import=/config/rtorrent/rtorrent.rc
 
 until [ -e "/config/rtorrent/rtorrent_sess/rtorrent.lock" ];

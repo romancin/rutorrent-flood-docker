@@ -5,13 +5,19 @@ MAINTAINER xeroxmalf
 # set version label
 ARG BUILD_DATE
 ARG VERSION
+ARG BUILD_CORES
 LABEL build_version="Linuxserver.io version:- ${VERSION} Build-date:- ${BUILD_DATE}"
 
 # package version
 ARG MEDIAINF_VER="0.7.90"
+ARG RTORRENT_VER="0.9.6"
+ARG LIBTORRENT_VER="0.13.6"
+
+# set env
+ENV PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
 
 # install runtime packages
-RUN \
+RUN NB_CORES=${BUILD_CORES-`getconf _NPROCESSORS_CONF`} && \
  apk add --no-cache \
         ca-certificates \
         curl \
@@ -21,7 +27,7 @@ RUN \
         gzip \
         logrotate \
         nginx \
-        rtorrent \
+#        rtorrent \
 	dtach \
         tar \
         unrar \
@@ -62,6 +68,12 @@ RUN \
         libtool \
         make \
         ncurses-dev \
+	build-base \
+	libtool \
+	subversion \
+	cppunit-dev \
+	curl-dev \
+	linux-headers \
         openssl-dev && \
 
 # install webui
@@ -79,6 +91,28 @@ RUN \
  perl -MCPAN -e 'my $c = "CPAN::HandleConfig"; $c->load(doit => 1, autoconfig => 1); $c->edit(prerequisites_policy => "follow"); $c->edit(build_requires_install_policy => "yes"); $c->commit' && \
  curl -L http://cpanmin.us | perl - App::cpanminus && \
 	cpanm HTML::Entities XML::LibXML JSON JSON::XS && \
+
+# compile xmlrpc-c
+cd /tmp && \
+svn checkout http://svn.code.sf.net/p/xmlrpc-c/code/stable xmlrpc-c && \
+cd /tmp/xmlrpc-c && \
+./configure && \
+make -j ${NB_CORES} && \
+make install && \
+
+# compile libtorrent
+cd /tmp && \
+mkdir libtorrent && \
+cd libtorrent && \
+wget -qO- https://github.com/rakshasa/libtorrent/archive/${LIBTORRENT_VER}.tar.gz | tar xz --strip 1 && \
+./autogen.sh && ./configure && make -j ${NB_CORES} && make install && \
+
+# compile rtorrent
+cd /tmp && \
+mkdir rtorrent && \
+cd rtorrent && \
+wget -qO- https://github.com/rakshasa/rtorrent/archive/${RTORRENT_VER}.tar.gz | tar xz --strip 1 && \
+./autogen.sh && ./configure --with-xmlrpc-c && make -j ${NB_CORES} && make install \./autogen.sh && ./configure --with-xmlrpc-c && make -j ${NB_CORES} && make install && \
 
 # compile mediainfo packages
  curl -o \
