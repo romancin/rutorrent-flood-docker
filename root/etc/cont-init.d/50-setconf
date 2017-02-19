@@ -14,3 +14,4 @@ mkdir -p /config/tmp /detach_sess
 chown abc:abc -R /config /detach_sess
 chown abc:abc -R /usr/share/webapps/rutorrent
 chown abc:abc /downloads
+chmod 755 /usr/local/bin/curl
