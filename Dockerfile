@@ -9,25 +9,25 @@ ARG BUILD_CORES
 LABEL build_version="Linuxserver.io version:- ${VERSION} Build-date:- ${BUILD_DATE}"
 
 # package version
-ARG MEDIAINF_VER="0.7.90"
+ARG MEDIAINF_VER="0.7.92.1"
 ARG RTORRENT_VER="0.9.6"
 ARG LIBTORRENT_VER="0.13.6"
+ARG CURL_VER="7.50.0"
 
 # set env
 ENV PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
+ENV LD_LIBRARY_PATH=/usr/local/lib
 
 # install runtime packages
 RUN NB_CORES=${BUILD_CORES-`getconf _NPROCESSORS_CONF`} && \
  apk add --no-cache \
         ca-certificates \
-        curl \
         fcgi \
         ffmpeg \
         geoip \
         gzip \
         logrotate \
         nginx \
-#        rtorrent \
 	dtach \
         tar \
         unrar \
@@ -43,6 +43,7 @@ RUN NB_CORES=${BUILD_CORES-`getconf _NPROCESSORS_CONF`} && \
 	perl-digest-sha1 \
 	git \
 	openssl \
+	binutils \
         zip && \
 
  apk add --no-cache \
@@ -60,7 +61,6 @@ RUN NB_CORES=${BUILD_CORES-`getconf _NPROCESSORS_CONF`} && \
         autoconf \
         automake \
         cppunit-dev \
-        curl-dev \
 	perl-dev \
         file \
         g++ \
@@ -72,9 +72,17 @@ RUN NB_CORES=${BUILD_CORES-`getconf _NPROCESSORS_CONF`} && \
 	libtool \
 	subversion \
 	cppunit-dev \
-	curl-dev \
 	linux-headers \
+	curl-dev \
         openssl-dev && \
+
+# compile curl to fix ssl for rtorrent
+cd /tmp && \
+mkdir curl && \
+cd curl && \
+wget -qO- https://curl.haxx.se/download/curl-${CURL_VER}.tar.gz | tar xz --strip 1 && \
+./configure --with-ssl && make -j ${NB_CORES} && make install && \
+ldconfig /usr/bin && ldconfig /usr/lib && \
 
 # install webui
  mkdir -p \
@@ -94,11 +102,11 @@ RUN NB_CORES=${BUILD_CORES-`getconf _NPROCESSORS_CONF`} && \
 
 # compile xmlrpc-c
 cd /tmp && \
-svn checkout http://svn.code.sf.net/p/xmlrpc-c/code/stable xmlrpc-c && \
+#svn checkout http://svn.code.sf.net/p/xmlrpc-c/code/stable xmlrpc-c && \
+mkdir xmlrpc-c && \
 cd /tmp/xmlrpc-c && \
-./configure && \
-make -j ${NB_CORES} && \
-make install && \
+wget -qO- https://sourceforge.net/projects/xmlrpc-c/files/latest/download?source=files | tar xz --strip 1 && \
+./configure --with-libwww-ssl --disable-wininet-client --disable-curl-client --disable-libwww-client --disable-abyss-server --disable-cgi-server && make -j ${NB_CORES} && make install && \
 
 # compile libtorrent
 cd /tmp && \
@@ -112,7 +120,7 @@ cd /tmp && \
 mkdir rtorrent && \
 cd rtorrent && \
 wget -qO- https://github.com/rakshasa/rtorrent/archive/${RTORRENT_VER}.tar.gz | tar xz --strip 1 && \
-./autogen.sh && ./configure --with-xmlrpc-c && make -j ${NB_CORES} && make install \./autogen.sh && ./configure --with-xmlrpc-c && make -j ${NB_CORES} && make install && \
+./autogen.sh && ./configure --with-xmlrpc-c && make -j ${NB_CORES} && make install && \
 
 # compile mediainfo packages
  curl -o \
