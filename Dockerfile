@@ -97,6 +97,43 @@ ldconfig /usr/bin && ldconfig /usr/lib && \
  rm -rf \
         /defaults/rutorrent-conf/users && \
 
+# install webui extras
+# QuickBox Theme
+git clone https://github.com/QuickBox/club-QuickBox /usr/share/webapps/rutorrent/plugins/theme/themes/club-QuickBox
+git clone https://github.com/Phlooo/ruTorrent-MaterialDesign /usr/share/webapps/rutorrent/plugins/theme/themes/MaterialDesign
+# ruTorrent plugins
+cd /usr/share/webapps/rutorrent/plugins/
+git clone https://github.com/orobardet/rutorrent-force_save_session force_save_session
+git clone https://github.com/AceP1983/ruTorrent-plugins 
+mv ruTorrent-plugins/* .
+rm -rf ruTorrent-plugins
+apk add --no-cache cksfv
+git clone https://github.com/nelu/rutorrent-thirdparty-plugins.git
+mv rutorrent-thirdparty-plugins/* .
+rm -rf rutorrent-thirdparty-plugins
+cd /usr/share/webapps/rutorrent/
+chmod 755 plugins/filemanager/scripts/*
+cd /tmp
+git clone https://github.com/mcrapet/plowshare.git
+cd plowshare/
+make install
+cd ..
+rm -rf plowshare*
+apk add --no-cache unzip bzip2
+cd /tmp
+if [ `uname -a | cut -d " " -f 12` == "x86_64" ];then
+  wget http://www.rarlab.com/rar/rarlinux-x64-5.4.0.tar.gz
+  tar zxvf rarlinux-x64-5.4.0.tar.gz
+  mv rar/rar /usr/bin
+  mv rar/unrar /usr/bin
+else
+   wget http://www.rarlab.com/rar/rarlinux-5.4.0.tar.gz
+   tar zxvf rarlinux-5.4.0.tar.gz
+   mv rar/rar /usr/bin
+   mv rar/unrar /usr/bin
+fi
+rm -rf rar;rm rarlinux-*
+
 # install autodl-irssi perl modules
  perl -MCPAN -e 'my $c = "CPAN::HandleConfig"; $c->load(doit => 1, autoconfig => 1); $c->edit(prerequisites_policy => "follow"); $c->edit(build_requires_install_policy => "yes"); $c->commit' && \
  curl -L http://cpanmin.us | perl - App::cpanminus && \
