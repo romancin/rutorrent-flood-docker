@@ -134,6 +134,7 @@ git clone https://github.com/Gyran/rutorrent-ratiocolor ratiocolor && \
 git clone https://github.com/Gyran/rutorrent-instantsearch instantsearch && \
 git clone https://github.com/astupidmoose/rutorrent-logoff logoff && \
 git clone https://github.com/xombiemp/rutorrentMobile && \
+git clone https://github.com/dioltas/AddZip && \
 
 # install autodl-irssi perl modules
  perl -MCPAN -e 'my $c = "CPAN::HandleConfig"; $c->load(doit => 1, autoconfig => 1); $c->edit(prerequisites_policy => "follow"); $c->edit(build_requires_install_policy => "yes"); $c->commit' && \
