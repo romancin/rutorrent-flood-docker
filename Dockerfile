@@ -182,7 +182,7 @@ wget -qO- https://github.com/rakshasa/rtorrent/archive/${RTORRENT_VER}.tar.gz | 
         make install && \
 
 # install flood webui
- apk add --no-cahe nodejs && \
+ apk add --no-cache nodejs && \
  mkdir /usr/flood && \
  cd /usr/flood && \
  wget -qO- https://github.com/jfurrow/flood/archive/v${FLOOD_VER}.tar.gz | tar xz --strip 1 &&\
