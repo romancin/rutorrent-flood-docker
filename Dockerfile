@@ -1,6 +1,6 @@
 FROM lsiobase/alpine
 
-MAINTAINER xeroxmalf
+MAINTAINER romancin
 
 # set version label
 ARG BUILD_DATE
@@ -47,6 +47,7 @@ RUN NB_CORES=${BUILD_CORES-`getconf _NPROCESSORS_CONF`} && \
 	git \
 	libressl \
 	binutils \
+	findutils \
         zip && \
 
  apk add --no-cache \
