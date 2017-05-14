@@ -121,17 +121,18 @@ cd .. && \
 rm -rf plowshare* && \
 apk add --no-cache unzip bzip2 && \
 cd /tmp && \
+if grep -q "grunt" package.json; then echo succeed; fi
 if [ `uname -a | cut -d " " -f 12` == "x86_64" ];then \
   wget http://www.rarlab.com/rar/rarlinux-x64-5.4.0.tar.gz && \
   tar zxvf rarlinux-x64-5.4.0.tar.gz && \
   mv rar/rar /usr/bin && \
-  mv rar/unrar /usr/bin && \
+  mv rar/unrar /usr/bin \
 fi && \
 if [ `uname -a | cut -d " " -f 12` != "x86_64" ];then \
    wget http://www.rarlab.com/rar/rarlinux-5.4.0.tar.gz && \
    tar zxvf rarlinux-5.4.0.tar.gz && \
    mv rar/rar /usr/bin && \
-   mv rar/unrar /usr/bin && \
+   mv rar/unrar /usr/bin \
 fi && \
 rm -rf rar;rm rarlinux-* && \
 
