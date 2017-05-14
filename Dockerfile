@@ -162,3 +162,4 @@ COPY root/ /
 # ports and volumes
 EXPOSE 443 51415
 VOLUME /config /downloads
+CMD ["init"]
