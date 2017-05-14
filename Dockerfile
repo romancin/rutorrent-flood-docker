@@ -1,4 +1,4 @@
-FROM lsiobase/alpine
+FROM alpine:3.5
 
 MAINTAINER xeroxmalf
 
@@ -19,6 +19,8 @@ ENV PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
 ENV LD_LIBRARY_PATH=/usr/local/lib
 
 # install runtime packages
+#RUN apk del libressl-dev
+
 RUN NB_CORES=${BUILD_CORES-`getconf _NPROCESSORS_CONF`} && \
  apk add --no-cache \
         ca-certificates \
@@ -42,7 +44,7 @@ RUN NB_CORES=${BUILD_CORES-`getconf _NPROCESSORS_CONF`} && \
 	perl-net-ssleay \
 	perl-digest-sha1 \
 	git \
-	openssl \
+	libressl \
 	binutils \
         zip && \
 
@@ -74,7 +76,7 @@ RUN NB_CORES=${BUILD_CORES-`getconf _NPROCESSORS_CONF`} && \
 	cppunit-dev \
 	linux-headers \
 	curl-dev \
-        openssl-dev && \
+        libressl-dev && \
 
 # compile curl to fix ssl for rtorrent
 cd /tmp && \
