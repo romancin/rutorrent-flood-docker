@@ -128,6 +128,12 @@ tar zxvf rarlinux-x64-5.4.0.tar.gz && \
 mv rar/rar /usr/bin && \
 mv rar/unrar /usr/bin && \
 rm -rf rar;rm rarlinux-* && \
+cd /usr/share/webapps/rutorrent/plugins/ && \
+git clone https://github.com/Gyran/rutorrent-pausewebui pausewebui && \
+git clone https://github.com/Gyran/rutorrent-ratiocolor ratiocolor && \
+git clone https://github.com/Gyran/rutorrent-instantsearch instantsearch && \
+git clone https://github.com/astupidmoose/rutorrent-logoff logoff && \
+git clone https://github.com/xombiemp/rutorrentMobile && \
 
 # install autodl-irssi perl modules
  perl -MCPAN -e 'my $c = "CPAN::HandleConfig"; $c->load(doit => 1, autoconfig => 1); $c->edit(prerequisites_policy => "follow"); $c->edit(build_requires_install_policy => "yes"); $c->commit' && \
