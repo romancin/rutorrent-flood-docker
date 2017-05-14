@@ -13,6 +13,7 @@ ARG MEDIAINF_VER="0.7.92.1"
 ARG RTORRENT_VER="0.9.4"
 ARG LIBTORRENT_VER="0.13.4"
 ARG CURL_VER="7.50.0"
+ARG FLOOD_VER=1.0.0
 
 # set env
 ENV PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
@@ -180,6 +181,13 @@ wget -qO- https://github.com/rakshasa/rtorrent/archive/${RTORRENT_VER}.tar.gz | 
  cd /tmp/mediainfo/MediaInfo/Project/GNU/CLI && \
         make install && \
 
+# install flood webui
+ apk add --no-cahe nodejs && \
+ mkdir /usr/flood && \
+ cd /usr/flood && \
+ wget -qO- https://github.com/jfurrow/flood/archive/v${FLOOD_VER}.tar.gz | tar xz --strip 1 &&\
+ npm install --production && \
+
 # cleanup
  apk del --purge \
         build-dependencies && \
@@ -190,5 +198,5 @@ wget -qO- https://github.com/rakshasa/rtorrent/archive/${RTORRENT_VER}.tar.gz | 
 COPY root/ /
 
 # ports and volumes
-EXPOSE 443 51415
+EXPOSE 443 51415 3000
 VOLUME /config /downloads
