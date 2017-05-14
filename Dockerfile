@@ -1,4 +1,4 @@
-FROM alpine:3.5
+FROM lsiobase/alpine
 
 MAINTAINER xeroxmalf
 
@@ -162,4 +162,3 @@ COPY root/ /
 # ports and volumes
 EXPOSE 443 51415
 VOLUME /config /downloads
-CMD ["init"]
