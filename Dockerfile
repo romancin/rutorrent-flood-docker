@@ -130,7 +130,7 @@ else \
    wget http://www.rarlab.com/rar/rarlinux-5.4.0.tar.gz && \
    tar zxvf rarlinux-5.4.0.tar.gz && \
    mv rar/rar /usr/bin && \
-   mv rar/unrar /usr/bin && \
+   mv rar/unrar /usr/bin \
 fi && \
 rm -rf rar;rm rarlinux-* && \
 
