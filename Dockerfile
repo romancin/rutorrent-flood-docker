@@ -121,12 +121,12 @@ cd .. && \
 rm -rf plowshare* && \
 apk add --no-cache unzip bzip2 && \
 cd /tmp && \
-if [ `uname -a | cut -d " " -f 12` == "x86_64" ];then && \
+if [ `uname -a | cut -d " " -f 12` == "x86_64" ];then \
   wget http://www.rarlab.com/rar/rarlinux-x64-5.4.0.tar.gz && \
   tar zxvf rarlinux-x64-5.4.0.tar.gz && \
   mv rar/rar /usr/bin && \
   mv rar/unrar /usr/bin && \
-else && \
+else \
    wget http://www.rarlab.com/rar/rarlinux-5.4.0.tar.gz && \
    tar zxvf rarlinux-5.4.0.tar.gz && \
    mv rar/rar /usr/bin && \
