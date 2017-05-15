@@ -1,4 +1,5 @@
 execute = {sh,-c,/usr/bin/php7 /usr/share/webapps/rutorrent/php/initplugins.php abc &}
+execute = {sh,-c,/usr/bin/php7 /usr/share/webapps/rutorrent/php/initplugins.php admin &}
 execute.nothrow = rm,/run/php/.rtorrent.sock
 network.scgi.open_local = /run/php/.rtorrent.sock
 schedule = socket_chmod,0,0,"execute=chmod,0660,/run/php/.rtorrent.sock"
