@@ -1,14 +1,52 @@
+# Initialize plugins on rtorrent start without opening webui
 execute = {sh,-c,/usr/bin/php7 /usr/share/webapps/rutorrent/php/initplugins.php abc &}
 execute = {sh,-c,/usr/bin/php7 /usr/share/webapps/rutorrent/php/initplugins.php admin &}
+
+# Prepare rtorrent communication socket
 execute.nothrow = rm,/run/php/.rtorrent.sock
 network.scgi.open_local = /run/php/.rtorrent.sock
 schedule = socket_chmod,0,0,"execute=chmod,0660,/run/php/.rtorrent.sock"
 schedule = socket_chgrp,0,0,"execute=chgrp,abc,/run/php/.rtorrent.sock"
+
+# Directory Management
+directory = /downloads/
+session = /config/rtorrent/rtorrent_sess
+
+# Log file management
 log.open_file = "rtorrent", /config/log/rtorrent/rtorrent.log
 log.add_output = "info", "rtorrent"
-# min_peers = 10
-# max_peers = 1200
-# max_uploads = 15
+
+# General Parameters
+check_hash = no
+dht = off
+peer_exchange = no
+system.umask.set = 002
+encoding_list = UTF-8
+
+# Network parameters
+max_memory_usage = 4096M
+max_downloads_global = 0
+max_uploads_global = 0
+min_peers = 1
+max_peers = 150
+min_peers_seed = -1
+max_peers_seed = -1
+max_uploads = 230
+#download_rate = 291840 # 95pc del ancho de banda
+#upload_rate = 27648 #90pc del ancho de banda
+download_rate = 0
+upload_rate = 0
+use_udp_trackers = yes
+port_random = no
+port_range = 51415-51415
+bind = 0.0.0.0
+encryption = allow_incoming,try_outgoing,enable_retry
+# network.http.ssl_verify_peer.set=0
+
+# Preallocate files; reduces defragmentation on filesystems.
+system.file_allocate.set = yes
+
+# tuning parameters
 throttle.min_peers.normal.set = 10
 throttle.max_peers.normal.set = 30
 throttle.min_peers.seed.set = -1
@@ -22,23 +60,86 @@ pieces.preload.min_size.set = 262144
 pieces.preload.min_rate.set = 5120
 throttle.global_down.max_rate.set_kb = 0
 throttle.global_up.max_rate.set_kb = 0
-download_rate = 0
-upload_rate = 0
-schedule = watch_directory_1,5,5,"load.start=/downloads/watched/*.torrent"
-directory = /downloads/incoming
-session = /config/rtorrent/rtorrent_sess
-schedule = low_diskspace,5,60,close_low_diskspace=100M
-# ip = 178.32.28.51
-bind = 0.0.0.0
-port_range = 51415-51415
-port_random = no
-check_hash = no
-use_udp_trackers = yes
-encryption = allow_incoming,try_outgoing,enable_retry
-dht = disable
-dht_port = 6881
-peer_exchange = no
-# network.http.ssl_verify_peer.set=0
-# scgi_port = 0.0.0.0:5000
-encoding_list = UTF-8
-system.umask.set = 002
+
+# General watch directory
+schedule = watch_directory_99,5,5,"load_start=/downloads/watch/*.torrent,\"d.set_custom=auto,/downloads/\""
+
+# Watch directories configuration
+# watch subdirectory by tracker
+schedule = watch_directory_1,5,5,"load_start=/downloads/watch/bajaunapeli/*.torrent,\"d.set_custom=auto,/downloads/bajaunapeli/\""
+schedule = watch_directory_2,5,5,"load_start=/downloads/watch/bitspyder/*.torrent,\"d.set_custom=auto,/downloads/bitspyder/\""
+schedule = watch_directory_3,5,5,"load_start=/downloads/watch/torrentfactory/*.torrent,\"d.set_custom=auto,/downloads/torrentfactory/\""
+schedule = watch_directory_4,5,5,"load_start=/downloads/watch/hachede/*.torrent,\"d.set_custom=auto,/downloads/hachede/\""
+schedule = watch_directory_5,5,5,"load_start=/downloads/watch/hdcity/*.torrent,\"d.set_custom=auto,/downloads/hdcity/\""
+schedule = watch_directory_6,5,5,"load_start=/downloads/watch/learnflakes/*.torrent,\"d.set_custom=auto,/downloads/learnflakes/\""
+schedule = watch_directory_7,5,5,"load_start=/downloads/watch/puntotorrent/*.torrent,\"d.set_custom=auto,/downloads/puntotorrent/\""
+schedule = watch_directory_8,5,5,"load_start=/downloads/watch/tbplus/*.torrent,\"d.set_custom=auto,/downloads/tbplus/\""
+schedule = watch_directory_9,5,5,"load_start=/downloads/watch/waffles/*.torrent,\"d.set_custom=auto,/downloads/waffles/\""
+schedule = watch_directory_11,5,5,"load_start=/downloads/watch/xbytes/*.torrent,\"d.set_custom=auto,/downloads/xbytes/\""
+schedule = watch_directory_12,5,5,"load_start=/downloads/watch/otros/*.torrent,\"d.set_custom=auto,/downloads/otros/\""
+schedule = watch_directory_13,5,5,"load_start=/downloads/watch/pedros/*.torrent,\"d.set_custom=auto,/downloads/pedros/\""
+schedule = watch_directory_14,5,5,"load_start=/downloads/watch/cinemaggedon/*.torrent,\"d.set_custom=auto,/downloads/cinemaggedon/\""
+schedule = watch_directory_15,5,5,"load_start=/downloads/watch/torrentland/*.torrent,\"d.set_custom=auto,/downloads/torrentland/\""
+schedule = watch_directory_16,5,5,"load_start=/downloads/watch/tunetraxx/*.torrent,\"d.set_custom=auto,/downloads/tunetraxx/\""
+schedule = watch_directory_17,5,5,"load_start=/downloads/watch/brokenstones/*.torrent,\"d.set_custom=auto,/downloads/brokenstones/\""
+schedule = watch_directory_18,5,5,"load_start=/downloads/watch/32pages/*.torrent,\"d.set_custom=auto,/downloads/32pages/\""
+schedule = watch_directory_19,5,5,"load_start=/downloads/watch/lztr/*.torrent,\"d.set_custom=auto,/downloads/lztr/\""
+schedule = watch_directory_20,5,5,"load_start=/downloads/watch/p2pelite/*.torrent,\"d.set_custom=auto,/downloads/p2pelite/\""
+schedule = watch_directory_21,5,5,"load_start=/downloads/watch/bitgamer/*.torrent,\"d.set_custom=auto,/downloads/bitgamer/\""
+schedule = watch_directory_22,5,5,"load_start=/downloads/watch/psytorrents/*.torrent,\"d.set_custom=auto,/downloads/psytorrents/\""
+schedule = watch_directory_23,5,5,"load_start=/downloads/watch/pleasuredome/*.torrent,\"d.set_custom=auto,/downloads/pleasuredome/\""
+schedule = watch_directory_24,5,5,"load_start=/downloads/watch/hdspain/*.torrent,\"d.set_custom=auto,/downloads/hdspain/\""
+schedule = watch_directory_25,5,5,"load_start=/downloads/watch/iptorrents/*.torrent,\"d.set_custom=auto,/downloads/iptorrents/\""
+schedule = watch_directory_26,5,5,"load_start=/downloads/watch/trancetraffic/*.torrent,\"d.set_custom=auto,/downloads/trancetraffic/\""
+schedule = watch_directory_27,5,5,"load_start=/downloads/watch/morethantv/*.torrent,\"d.set_custom=auto,/downloads/morethantv/\""
+schedule = watch_directory_28,5,5,"load_start=/downloads/watch/passthepopcorn/*.torrent,\"d.set_custom=auto,/downloads/passthepopcorn/\""
+schedule = watch_directory_29,5,5,"load_start=/downloads/watch/gp32spain/*.torrent,\"d.set_custom=auto,/downloads/gp32spain/\""
+schedule = watch_directory_30,5,5,"load_start=/downloads/watch/gazellegames/*.torrent,\"d.set_custom=auto,/downloads/gazellegames/\""
+schedule = watch_directory_31,5,5,"load_start=/downloads/watch/opencd/*.torrent,\"d.set_custom=auto,/downloads/opencd/\""
+schedule = watch_directory_32,5,5,"load_start=/downloads/watch/mteam/*.torrent,\"d.set_custom=auto,/downloads/mteam/\""
+schedule = watch_directory_33,5,5,"load_start=/downloads/watch/retrowithin/*.torrent,\"d.set_custom=auto,/downloads/retrowithin/\""
+schedule = watch_directory_34,5,5,"load_start=/downloads/watch/divteam/*.torrent,\"d.set_custom=auto,/downloads/divteam/\""
+schedule = watch_directory_35,5,5,"load_start=/downloads/watch/racingforme/*.torrent,\"d.set_custom=auto,/downloads/racingforme/\""
+schedule = watch_directory_36,5,5,"load_start=/downloads/watch/bibliotik/*.torrent,\"d.set_custom=auto,/downloads/bibliotik/\""
+schedule = watch_directory_37,5,5,"load_start=/downloads/watch/beyondhd/*.torrent,\"d.set_custom=auto,/downloads/beyondhd/\""
+schedule = watch_directory_38,5,5,"load_start=/downloads/watch/myanonamouse/*.torrent,\"d.set_custom=auto,/downloads/myanonamouse/\""
+schedule = watch_directory_39,5,5,"load_start=/downloads/watch/ultimategamer/*.torrent,\"d.set_custom=auto,/downloads/ultimategamer/\""
+schedule = watch_directory_40,5,5,"load_start=/downloads/watch/ultimategamer/*.torrent,\"d.set_custom=auto,/downloads/ultimategamer/\""
+schedule = watch_directory_41,5,5,"load_start=/downloads/watch/x264/*.torrent,\"d.set_custom=auto,/downloads/x264/\""
+schedule = watch_directory_42,5,5,"load_start=/downloads/watch/awesomehd/*.torrent,\"d.set_custom=auto,/downloads/awesomehd/\""
+schedule = watch_directory_43,5,5,"load_start=/downloads/watch/broadcasthenet/*.torrent,\"d.set_custom=auto,/downloads/broadcasthenet/\""
+schedule = watch_directory_44,5,5,"load_start=/downloads/watch/bitme/*.torrent,\"d.set_custom=auto,/downloads/bitme/\""
+schedule = watch_directory_45,5,5,"load_start=/downloads/watch/theplace/*.torrent,\"d.set_custom=auto,/downloads/theplace/\""
+schedule = watch_directory_46,5,5,"load_start=/downloads/watch/theshow/*.torrent,\"d.set_custom=auto,/downloads/theshow/\""
+schedule = watch_directory_47,5,5,"load_start=/downloads/watch/thegeeks/*.torrent,\"d.set_custom=auto,/downloads/thegeeks/\""
+schedule = watch_directory_48,5,5,"load_start=/downloads/watch/thevault/*.torrent,\"d.set_custom=auto,/downloads/thevault/\""
+schedule = watch_directory_49,5,5,"load_start=/downloads/watch/theempire/*.torrent,\"d.set_custom=auto,/downloads/theempire/\""
+schedule = watch_directory_50,5,5,"load_start=/downloads/watch/theoccult/*.torrent,\"d.set_custom=auto,/downloads/theoccult/\""
+schedule = watch_directory_51,5,5,"load_start=/downloads/watch/torrentleech/*.torrent,\"d.set_custom=auto,/downloads/torrentleech/\""
+schedule = watch_directory_52,5,5,"load_start=/downloads/watch/hdbits/*.torrent,\"d.set_custom=auto,/downloads/hdbits/\""
+schedule = watch_directory_53,5,5,"load_start=/downloads/watch/zonaq/*.torrent,\"d.set_custom=auto,/downloads/zonaq/\""
+schedule = watch_directory_54,5,5,"load_start=/downloads/watch/torrentech/*.torrent,\"d.set_custom=auto,/downloads/torrentech/\""
+schedule = watch_directory_55,5,5,"load_start=/downloads/watch/sceneaccess/*.torrent,\"d.set_custom=auto,/downloads/sceneaccess/\""
+schedule = watch_directory_56,5,5,"load_start=/downloads/watch/efectodoppler/*.torrent,\"d.set_custom=auto,/downloads/efectodoppler/\""
+schedule = watch_directory_57,5,5,"load_start=/downloads/watch/musicvids/*.torrent,\"d.set_custom=auto,/downloads/musicvids/\""
+schedule = watch_directory_58,5,5,"load_start=/downloads/watch/apollo/*.torrent,\"d.set_custom=auto,/downloads/apollo/\""
+schedule = watch_directory_59,5,5,"load_start=/downloads/watch/passtheheadphones/*.torrent,\"d.set_custom=auto,/downloads/passtheheadphones/\""
+schedule = watch_directory_60,5,5,"load_start=/downloads/watch/notwhatcd/*.torrent,\"d.set_custom=auto,/downloads/notwhatcd/\""
+
+
+# Stop seeding when .torrent from watch file is deleted
+schedule = untied_directory,5,5,stop_untied=
+
+# Pause torrents when free space is only 1GB 
+schedule = low_diskspace,5,60,close_low_diskspace=1024M
+
+# Move the downloaded data to the tracker directory beï¿½low Downloads
+system.method.set_key = event.download.finished,move_complete,"branch={$movecheck=,movedir=}"
+system.method.insert=movecheck,simple,"and={d.get_complete=,d.get_custom=auto}"
+system.method.insert=movedir,simple,"d.set_directory=$d.get_custom=auto;execute=mv,-f,$d.get_base_path=,$d.get_custom=auto"
+
+# Telegram Notifications
+#system.method.set_key = event.download.finished,push_me,"execute=/config/rtorrent/notify_telegram.sh,$d.get_name="
+
+# Commit session data
+schedule = session_save,240,300,session_save=
