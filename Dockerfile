@@ -18,7 +18,9 @@ ARG FLOOD_VER=1.0.0
 # set env
 ENV PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
 ENV LD_LIBRARY_PATH=/usr/local/lib
-
+ENV FLOOD_SECRET=password \
+    CONTEXT_PATH=/ \
+    
 # install runtime packages
 #RUN apk del libressl-dev
 
