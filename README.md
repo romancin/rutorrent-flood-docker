@@ -15,10 +15,13 @@ Also includes MaterialDesign theme as an option.
 
 Tested and working on Synology and QNAP, but should work on any x86_64 devices.
 
-Instructions: Map any local port to 443 for SSL rutorrent access
+Instructions:
+Map any local port to 443 for SSL rutorrent access (Default username/password is admin/admin)
 Map any local port to 51415 for rtorrent
 Map a local volume to /config (Stores configuration data, including rtorrent session directory. Consider this on SSD Disk)
 Map a local volume to /downloads (Stores downloaded torrents)
+
+In order to change rutorrent web access password execute this inside container: sh -c "openssl passwd -apr1 >> /config/nginx/.htpasswd"
 
 Sample run command:
 
