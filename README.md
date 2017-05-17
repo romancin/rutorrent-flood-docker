@@ -29,10 +29,11 @@ In order to change rutorrent web access password execute this inside container:
 Sample run command:
 
 docker run -d --name=rutorrent-flood \
--v /share/Container/rutorrent-docker/config:/config \
--v /share/Container/rutorrent-docker/downloads:/downloads \ 
--e PGID=0 -e PUID=0 -e TZ=Europe/Madrid \ 
--p 9443:443 \ 
+-v /share/Container/rutorrent-flood/config:/config \
+-v /share/Container/rutorrent-flood/downloads:/downloads \
+-e PGID=0 -e PUID=0 -e TZ=Europe/Madrid \
+-p 9443:443 \
+-p 3000:3000 \
 -p 51415-51415:51415-51415 \
 romancin/rutorrent-flood:latest \
 
