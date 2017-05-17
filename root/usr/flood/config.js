@@ -1,11 +1,11 @@
 const CONFIG = {
-  baseURI: '<CONTEXT_PATH>',
+  baseURI: '/',
   dbCleanInterval: 1000 * 60 * 60,
   dbPath: '/config/flood-db/',
   floodServerPort: 3000,
   maxHistoryStates: 30,
   pollInterval: 1000 * 5,
-  secret: '<FLOOD_SECRET>',
+  secret: 'password',
   scgi: {
     host: 'localhost',
     port: 5000,
