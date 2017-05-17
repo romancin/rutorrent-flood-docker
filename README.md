@@ -23,8 +23,8 @@ Instructions:
 - Map a local volume to /downloads (Stores downloaded torrents)
 
 In order to change rutorrent web access password execute this inside container: 
-sh -c "echo -n 'admin:' > /etc/nginx/.htpasswd"
-sh -c "openssl passwd -apr1 >> /config/nginx/.htpasswd"
+- sh -c "echo -n 'admin:' > /config/nginx/.htpasswd"
+- sh -c "openssl passwd -apr1 >> /config/nginx/.htpasswd"
 
 Sample run command:
 
