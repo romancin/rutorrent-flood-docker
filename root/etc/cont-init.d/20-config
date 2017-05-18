@@ -10,7 +10,7 @@
 
 # make folders
 mkdir -p \
-	/config{/log/nginx,/log/rtorrent,/log/rutorrent,/nginx,/nginx/conf.d,/php,/rtorrent/rtorrent_sess,/rutorrent/settings/users,.irssi,flood} \
+	/config{/log/nginx,/log/rtorrent,/log/rutorrent,/nginx,/nginx/conf.d,/php,/rtorrent/rtorrent_sess,/rutorrent/settings/users,/.irssi,/flood} \
 	/config/rutorrent/profiles{/settings,/torrents,/users,/tmp} \
 	/run{/nginx,/php} \
 	/var/lib/nginx/tmp/client_body
