@@ -10,7 +10,7 @@
 
 # make folders
 mkdir -p \
-	/config{/log/nginx,/log/rtorrent,/log/rutorrent,/nginx,/nginx/conf.d,/php,/rtorrent/rtorrent_sess,/rutorrent/settings/users} \
+	/config{/log/nginx,/log/rtorrent,/log/rutorrent,/nginx,/nginx/conf.d,/php,/rtorrent/rtorrent_sess,/rutorrent/settings/users,.irssi,flood} \
 	/config/rutorrent/profiles{/settings,/torrents,/users,/tmp} \
 	/run{/nginx,/php} \
 	/var/lib/nginx/tmp/client_body
@@ -45,6 +45,7 @@ if [ ! -e "/config/php/php.ini" ]; then
 	cp /etc/php7/php.ini /config/php/php.ini
 	sed -i -e 's/\(register_argc_argv .*=\).*/\1 On/g' /config/php/php.ini
 fi
+
 
 cp /config/php/php.ini /etc/php7/php.ini
 
