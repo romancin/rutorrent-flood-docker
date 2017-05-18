@@ -47,19 +47,19 @@ encryption = allow_incoming,try_outgoing,enable_retry
 system.file_allocate.set = yes
 
 # tuning parameters
-throttle.min_peers.normal.set = 10
-throttle.max_peers.normal.set = 30
-throttle.min_peers.seed.set = -1
-throttle.max_peers.seed.set = -1
-throttle.max_uploads.set = 30
-throttle.max_uploads.global.set = 0
-throttle.max_downloads.global.set = 3
-pieces.memory.max.set = 6G
 pieces.preload.type.set = 1
-pieces.preload.min_size.set = 262144
-pieces.preload.min_rate.set = 5120
-throttle.global_down.max_rate.set_kb = 0
-throttle.global_up.max_rate.set_kb = 0
+# throttle.min_peers.normal.set = 10
+# throttle.max_peers.normal.set = 30
+# throttle.min_peers.seed.set = -1
+# throttle.max_peers.seed.set = -1
+# throttle.max_uploads.set = 30
+# throttle.max_uploads.global.set = 0
+# throttle.max_downloads.global.set = 3
+# # pieces.memory.max.set = 6G
+# pieces.preload.min_size.set = 262144
+# pieces.preload.min_rate.set = 5120
+# throttle.global_down.max_rate.set_kb = 0
+# throttle.global_up.max_rate.set_kb = 0
 
 # General watch directory
 schedule = watch_directory_99,5,5,"load_start=/downloads/watch/*.torrent,\"d.set_custom=auto,/downloads/\""
