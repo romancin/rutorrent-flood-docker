@@ -1,9 +1,8 @@
 # rutorrent-flood-docker
 A repository for creating a docker container including rtorrent with rutorrent and flood interfaces
 
-This is a completely funcional Docker image with rutorrent 3.7, rtorrent 0.9.6, libtorrent 0.13.6 and a lot of plugins 
-for rutorrent, like autodl-irssi, filemanager, fileshare and other useful ones. (IMPORTANT: Be careful, some private trackers
-have blacklisted 0.9.6 version. Use 0.9.4 branch instead.)
+This is a completely funcional Docker image with flood, rutorrent, rtorrent, libtorrent and a lot of plugins 
+for rutorrent, like autodl-irssi, filemanager, fileshare and other useful ones.
 
 Based on Alpine Linux, which provides a very small size. 
 
@@ -28,6 +27,8 @@ In order to change rutorrent web access password execute this inside container:
 
 Sample run command:
 
+For rtorrent 0.9.6 version: \
+\
 docker run -d --name=rutorrent-flood \
 -v /share/Container/rutorrent-flood/config:/config \
 -v /share/Container/rutorrent-flood/downloads:/downloads \
@@ -36,5 +37,16 @@ docker run -d --name=rutorrent-flood \
 -p 3000:3000 \
 -p 51415-51415:51415-51415 \
 romancin/rutorrent-flood:latest \
+
+For rtorrent 0.9.4 version: \
+\
+docker run -d --name=rutorrent-flood \
+-v /share/Container/rutorrent-flood/config:/config \
+-v /share/Container/rutorrent-flood/downloads:/downloads \
+-e PGID=0 -e PUID=0 -e TZ=Europe/Madrid \
+-p 9443:443 \
+-p 3000:3000 \
+-p 51415-51415:51415-51415 \
+romancin/rutorrent-flood:0.9.4 \
 
 Rememeber editing /config/rtorrent/rtorrent.rc with your own settings, specially your watch subfolder configuration.

@@ -6,6 +6,7 @@ mkdir -p /config/tmp /detach_sess
 # copy config files/set links etc...
 [[ ! -L /home/abc/.autodl ]] && ln -s /config/.autodl /home/abc/.autodl
 [[ ! -L /config/.irssi/scripts/autorun/autodl-irssi.pl ]] && ln -s /config/.irssi/scripts/autodl-irssi.pl /config/.irssi/scripts/autorun/autodl-irssi.pl
+[[ ! -f /config/.irssi/config ]] && cp /defaults/config.irssi /config/.irssi/config
 [[ ! -f /config/.autodl/autodl.cfg ]] && cp /defaults/autodl.cfg /config/.autodl/autodl.cfg
 [[ ! -f /config/.autodl/autodl2.cfg ]] && cp /defaults/autodl2.cfg /config/.autodl/autodl2.cfg
 [[ ! -f /usr/share/webapps/rutorrent/plugins/autodl-irssi/conf.php ]] && cp /defaults/conf.php /usr/share/webapps/rutorrent/plugins/autodl-irssi/conf.php
