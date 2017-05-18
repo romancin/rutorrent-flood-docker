@@ -196,7 +196,7 @@ wget -qO- https://github.com/rakshasa/rtorrent/archive/${RTORRENT_VER}.tar.gz | 
  apk add --no-cache nodejs && \
  mkdir /usr/flood && \
  cd /usr/flood && \
- wget -qO- https://github.com/jfurrow/flood/archive/v${FLOOD_VER}.tar.gz | tar xz --strip 1 &&\
+ git clone https://github.com/jfurrow/flood . && \
  npm install --production && \
 
 # cleanup
