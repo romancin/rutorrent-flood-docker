@@ -60,7 +60,9 @@ cp /config/php/php.ini /etc/php7/php.ini
 # permissions
 chown abc:abc \
 	/downloads \
-	/downloads{/completed,/incoming,/watched}
+	/downloads/watch/{bajaunapeli,bitspyder,torrentfactory,hachede,hdcity,learnflakes,puntotorrent,tbplus,waffles,xbytes,otros,pedros,cinemaggedon,torrentland,tunetraxx,brokenstones,32pages,lztr,p2pelite,bitgamer,psytorrents,pleasuredome,hdspain,iptorrents,trancetraffic,morethantv,passthepopcorn,gp32spain,gazellegames,opencd,mteam,retrowithin,divteam,racingforme,bibliotik,beyondhd,myanonamouse,ultimategamer,x264,awesomehd,broadcasthenet,bitme,theplace,theshow,thegeeks,thevault,theempire,theoccult,torrentleech,hdbits,zonaq,torrentech,sceneaccess,efectodoppler,musicvids,apollo,passtheheadphones,notwhatcd} \
+        /downloads/{bajaunapeli,bitspyder,torrentfactory,hachede,hdcity,learnflakes,puntotorrent,tbplus,waffles,xbytes,otros,pedros,cinemaggedon,torrentland,tunetraxx,brokenstones,32pages,lztr,p2pelite,bitgamer,psytorrents,pleasuredome,hdspain,iptorrents,trancetraffic,morethantv,passthepopcorn,gp32spain,gazellegames,opencd,mteam,retrowithin,divteam,racingforme,bibliotik,beyondhd,myanonamouse,ultimategamer,x264,awesomehd,broadcasthenet,bitme,theplace,theshow,thegeeks,thevault,theempire,theoccult,torrentleech,hdbits,zonaq,torrentech,sceneaccess,efectodoppler,musicvids,apollo,passtheheadphones,notwhatcd} \
+
 
 chown -R abc:abc \
 	/config \
