@@ -1,6 +1,8 @@
 # rutorrent-flood-docker
 A repository for creating a docker container including rtorrent with rutorrent and flood interfaces
 
+[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=X2CT2SWQCP74U)
+
 This is a completely funcional Docker image with flood, rutorrent, rtorrent, libtorrent and a lot of plugins 
 for rutorrent, like autodl-irssi, filemanager, fileshare and other useful ones.
 
@@ -52,4 +54,3 @@ romancin/rutorrent-flood:0.9.4 \
 Rememeber editing /config/rtorrent/rtorrent.rc with your own settings, specially your watch subfolder configuration.
 
 You can invite me a beer if you want ;)
-[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=X2CT2SWQCP74U)
