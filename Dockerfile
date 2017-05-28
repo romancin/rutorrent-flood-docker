@@ -6,7 +6,7 @@ MAINTAINER romancin
 ARG BUILD_DATE
 ARG VERSION
 ARG BUILD_CORES
-LABEL build_version="Linuxserver.io version:- ${VERSION} Build-date:- ${BUILD_DATE}"
+LABEL build_version="Romancin version:- ${VERSION} Build-date:- ${BUILD_DATE}"
 
 # package version
 ARG MEDIAINF_VER="0.7.92.1"
