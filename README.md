@@ -50,3 +50,6 @@ docker run -d --name=rutorrent-flood \
 romancin/rutorrent-flood:0.9.4 \
 
 Rememeber editing /config/rtorrent/rtorrent.rc with your own settings, specially your watch subfolder configuration.
+
+You can invite me a beer if you want ;)
+[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)]roman.martin@me.com
