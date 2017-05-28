@@ -1,5 +1,11 @@
 # rutorrent-flood-docker
-A repository for creating a docker container including rtorrent with rutorrent and flood interfaces
+A repository for creating a docker container including rtorrent with rutorrent and flood interfaces.
+
+[![](https://images.microbadger.com/badges/version/romancin/rutorrent-flood:devel.svg)](https://microbadger.com/images/romancin/rutorrent-flood "Docker image version")
+[![](https://images.microbadger.com/badges/image/romancin/rutorrent-flood:devel.svg)](https://microbadger.com/images/romancin/rutorrent-flood "Docker image size")
+[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=X2CT2SWQCP74U)
+
+You can invite me a beer if you want ;) 
 
 [![](https://images.microbadger.com/badges/version/romancin/rutorrent-flood:0.9.4.svg)](https://microbadger.com/images/romancin/rutorrent-flood "Docker image version")
 [![](https://images.microbadger.com/badges/image/romancin/rutorrent-flood:0.9.4.svg)](https://microbadger.com/images/romancin/rutorrent-flood "Docker image size")
