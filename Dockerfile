@@ -10,8 +10,8 @@ LABEL build_version="Romancin version:- ${VERSION} Build-date:- ${BUILD_DATE}"
 
 # package version
 ARG MEDIAINF_VER="0.7.92.1"
-ARG RTORRENT_VER="0.9.4"
-ARG LIBTORRENT_VER="0.13.4"
+ARG RTORRENT_VER="0.9.6"
+ARG LIBTORRENT_VER="0.13.6"
 ARG CURL_VER="7.50.0"
 ARG FLOOD_VER="1.0.0"
 
