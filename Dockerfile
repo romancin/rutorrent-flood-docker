@@ -53,7 +53,6 @@ RUN NB_CORES=${BUILD_CORES-`getconf _NPROCESSORS_CONF`} && \
         zip && \
 
  apk add --no-cache \
-        --repository http://nl.alpinelinux.org/alpine/edge/community \
         php7 \
         php7-cgi \
         php7-fpm \
