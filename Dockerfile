@@ -193,7 +193,7 @@ wget -qO- https://github.com/rakshasa/rtorrent/archive/${RTORRENT_VER}.tar.gz | 
         make install && \
 
 # install flood webui
- echo http://dl-cdn.alpinelinux.org/alpine/edge/main > /etc/apk/repositories && \
+ echo http://dl-cdn.alpinelinux.org/alpine/edge/main >> /etc/apk/repositories && \
  apk update && \
  apk add --no-cache nodejs \
  nodejs-npm && \
