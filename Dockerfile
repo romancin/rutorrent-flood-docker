@@ -9,10 +9,10 @@ ARG BUILD_CORES
 LABEL build_version="Romancin version:- ${VERSION} Build-date:- ${BUILD_DATE}"
 
 # package version
-ARG MEDIAINF_VER="0.7.92.1"
+ARG MEDIAINF_VER="0.7.99"
 ARG RTORRENT_VER="0.9.4"
 ARG LIBTORRENT_VER="0.13.4"
-ARG CURL_VER="7.50.0"
+ARG CURL_VER="7.56.1"
 ARG FLOOD_VER="1.0.0"
 
 # set env
@@ -21,9 +21,6 @@ ENV LD_LIBRARY_PATH=/usr/local/lib
 ENV FLOOD_SECRET=password
 ENV CONTEXT_PATH=/
     
-# install runtime packages
-#RUN apk del libressl-dev
-
 RUN NB_CORES=${BUILD_CORES-`getconf _NPROCESSORS_CONF`} && \
  apk add --no-cache \
         ca-certificates \
@@ -50,9 +47,7 @@ RUN NB_CORES=${BUILD_CORES-`getconf _NPROCESSORS_CONF`} && \
 	libressl \
 	binutils \
 	findutils \
-        zip && \
-
- apk add --no-cache \
+        zip  \
         php7 \
         php7-cgi \
         php7-fpm \
@@ -199,6 +194,10 @@ wget -qO- https://github.com/rakshasa/rtorrent/archive/${RTORRENT_VER}.tar.gz | 
  mkdir /usr/flood && \
  cd /usr/flood && \
  git clone https://github.com/jfurrow/flood . && \
+ cp config.template.js config.js && \
+ npm install && \
+ npm run build && \
+ rm config.js && \
 
 # cleanup
  apk del --purge \
