@@ -200,8 +200,6 @@ wget -qO- https://github.com/rakshasa/rtorrent/archive/${RTORRENT_VER}.tar.gz | 
  mkdir /usr/flood && \
  cd /usr/flood && \
  git clone https://github.com/jfurrow/flood . && \
- npm install && \
- npm run build && \
 
 # cleanup
  apk del --purge \
