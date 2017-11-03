@@ -49,6 +49,7 @@ RUN NB_CORES=${BUILD_CORES-`getconf _NPROCESSORS_CONF`} && \
 	findutils \
         zip  \
         php7 \
+	python \
         php7-cgi \
         php7-fpm \
         php7-json  \
