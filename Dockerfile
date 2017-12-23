@@ -1,4 +1,4 @@
-FROM lsiobase/alpine:3.6
+FROM lsiobase/alpine:3.7
 
 MAINTAINER romancin
 
