@@ -1,4 +1,4 @@
-FROM lsiobase/alpine:3.7
+FROM lsiobase/alpine:3.6
 
 MAINTAINER romancin
 
@@ -9,10 +9,10 @@ ARG BUILD_CORES
 LABEL build_version="Romancin version:- ${VERSION} Build-date:- ${BUILD_DATE}"
 
 # package version
-ARG MEDIAINF_VER="0.7.99"
+ARG MEDIAINF_VER="17.12"
 ARG RTORRENT_VER="0.9.4"
 ARG LIBTORRENT_VER="0.13.4"
-ARG CURL_VER="7.56.1"
+ARG CURL_VER="7.57.0"
 ARG FLOOD_VER="1.0.0"
 
 # set env
@@ -30,31 +30,30 @@ RUN NB_CORES=${BUILD_CORES-`getconf _NPROCESSORS_CONF`} && \
         gzip \
         logrotate \
         nginx \
-	dtach \
+        dtach \
         tar \
         unrar \
         unzip \
         wget \
-	irssi \
-	irssi-perl \
-	zlib \
-	zlib-dev \
-	libxml2-dev \
-	perl-archive-zip \
-	perl-net-ssleay \
-	perl-digest-sha1 \
-	git \
-	libressl \
-	binutils \
-	findutils \
-        zip  \
+        irssi \
+        irssi-perl \
+        zlib \
+        zlib-dev \
+        libxml2-dev \
+        perl-archive-zip \
+        perl-net-ssleay \
+        perl-digest-sha1 \
+        git \
+        libressl \
+        binutils \
+        findutils \
+        zip \
         php7 \
-	python \
         php7-cgi \
         php7-fpm \
         php7-json  \
         php7-mbstring \
-	php7-sockets \
+        php7-sockets \
         php7-pear && \
 
 # install build packages
@@ -62,19 +61,19 @@ RUN NB_CORES=${BUILD_CORES-`getconf _NPROCESSORS_CONF`} && \
         autoconf \
         automake \
         cppunit-dev \
-	perl-dev \
+        perl-dev \
         file \
         g++ \
         gcc \
         libtool \
         make \
         ncurses-dev \
-	build-base \
-	libtool \
-	subversion \
-	cppunit-dev \
-	linux-headers \
-	curl-dev \
+        build-base \
+        libtool \
+        subversion \
+        cppunit-dev \
+        linux-headers \
+        curl-dev \
         libressl-dev && \
 
 # compile curl to fix ssl for rtorrent
@@ -137,7 +136,7 @@ git clone https://github.com/dioltas/AddZip && \
 # install autodl-irssi perl modules
  perl -MCPAN -e 'my $c = "CPAN::HandleConfig"; $c->load(doit => 1, autoconfig => 1); $c->edit(prerequisites_policy => "follow"); $c->edit(build_requires_install_policy => "yes"); $c->commit' && \
  curl -L http://cpanmin.us | perl - App::cpanminus && \
-	cpanm HTML::Entities XML::LibXML JSON JSON::XS && \
+        cpanm HTML::Entities XML::LibXML JSON JSON::XS && \
 
 # compile xmlrpc-c
 cd /tmp && \
@@ -188,10 +187,12 @@ wget -qO- https://github.com/rakshasa/rtorrent/archive/${RTORRENT_VER}.tar.gz | 
         make install && \
 
 # install flood webui
- echo http://dl-cdn.alpinelinux.org/alpine/edge/main >> /etc/apk/repositories && \
- apk update && \
- apk add --no-cache nodejs \
- nodejs-npm && \
+ apk add --no-cache \
+     --repository http://dl-cdn.alpinelinux.org/alpine/v3.7/main \
+     python \
+     nodejs \
+     nodejs-npm && \
+
  mkdir /usr/flood && \
  cd /usr/flood && \
  git clone https://github.com/jfurrow/flood . && \
@@ -206,9 +207,9 @@ wget -qO- https://github.com/rakshasa/rtorrent/archive/${RTORRENT_VER}.tar.gz | 
  rm -rf \
         /tmp/*
 
-# add local files
+# add local files
 COPY root/ /
 
-# ports and volumes
+# ports and volumes
 EXPOSE 443 51415 3000
 VOLUME /config /downloads
