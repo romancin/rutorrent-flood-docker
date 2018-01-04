@@ -1,4 +1,4 @@
-FROM lsiobase/alpine:3.6
+FROM lsiobase/alpine:3.7
 
 MAINTAINER romancin
 
@@ -140,10 +140,10 @@ git clone https://github.com/dioltas/AddZip && \
 
 # compile xmlrpc-c
 cd /tmp && \
-#svn checkout http://svn.code.sf.net/p/xmlrpc-c/code/stable xmlrpc-c && \
-mkdir xmlrpc-c && \
+svn checkout http://svn.code.sf.net/p/xmlrpc-c/code/stable xmlrpc-c && \
+#mkdir xmlrpc-c && \
 cd /tmp/xmlrpc-c && \
-wget -qO- https://sourceforge.net/projects/xmlrpc-c/files/latest/download?source=files | tar xz --strip 1 && \
+#wget -qO- https://sourceforge.net/projects/xmlrpc-c/files/latest/download?source=files | tar xz --strip 1 && \
 ./configure --with-libwww-ssl --disable-wininet-client --disable-curl-client --disable-libwww-client --disable-abyss-server --disable-cgi-server && make -j ${NB_CORES} && make install && \
 
 # compile libtorrent
