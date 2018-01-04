@@ -140,7 +140,7 @@ git clone https://github.com/dioltas/AddZip && \
 
 # compile xmlrpc-c
 cd /tmp && \
-svn checkout http://svn.code.sf.net/p/xmlrpc-c/code/stable xmlrpc-c && \
+svn checkout http://svn.code.sf.net/p/xmlrpc-c/code/advanced xmlrpc-c && \
 #mkdir xmlrpc-c && \
 cd /tmp/xmlrpc-c && \
 #wget -qO- https://sourceforge.net/projects/xmlrpc-c/files/latest/download?source=files | tar xz --strip 1 && \
