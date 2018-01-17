@@ -111,6 +111,7 @@ mv rutorrent-thirdparty-plugins/* . && \
 rm -rf rutorrent-thirdparty-plugins && \
 cd /usr/share/webapps/rutorrent/ && \
 chmod 755 plugins/filemanager/scripts/* && \
+rm -rf plugins/fileupload && \
 cd /tmp && \
 git clone https://github.com/mcrapet/plowshare.git && \
 cd plowshare/ && \
