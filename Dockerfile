@@ -34,6 +34,7 @@ RUN NB_CORES=${BUILD_CORES-`getconf _NPROCESSORS_CONF`} && \
         tar \
         unrar \
         unzip \
+        sox \
         wget \
         irssi \
         irssi-perl \
