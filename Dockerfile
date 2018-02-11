@@ -194,6 +194,8 @@ wget -qO- https://github.com/rakshasa/rtorrent/archive/${RTORRENT_VER}.tar.gz | 
      nodejs \
      nodejs-npm && \
 
+ mkdir /extractor \
+
  mkdir /usr/flood && \
  cd /usr/flood && \
  git clone https://github.com/jfurrow/flood . && \
