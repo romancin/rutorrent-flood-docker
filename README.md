@@ -1,4 +1,5 @@
 # rutorrent-flood-docker
+
 A repository for creating a docker container including rtorrent with rutorrent and flood interfaces.
 
 [![](https://images.microbadger.com/badges/version/romancin/rutorrent-flood.svg)](https://microbadger.com/images/romancin/rutorrent-flood "Docker image version")
@@ -59,4 +60,4 @@ docker run -d --name=rutorrent-flood \
 romancin/rutorrent-flood:0.9.4
 ```
 
-Rememeber editing `/config/rtorrent/rtorrent.rc` with your own settings, specially your watch subfolder configuration.
+Remember editing `/config/rtorrent/rtorrent.rc` with your own settings, especially your watch subfolder configuration.
