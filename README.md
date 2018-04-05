@@ -1,4 +1,5 @@
 # rutorrent-flood-docker
+
 A repository for creating a docker container including rtorrent with rutorrent and flood interfaces.
 
 [![](https://images.microbadger.com/badges/version/romancin/rutorrent-flood.svg)](https://microbadger.com/images/romancin/rutorrent-flood "Docker image version")
@@ -28,13 +29,14 @@ Instructions:
 - Map a local volume to /downloads (Stores downloaded torrents)
 
 In order to change rutorrent web access password execute this inside container: 
-- sh -c "echo -n 'admin:' > /config/nginx/.htpasswd"
-- sh -c "openssl passwd -apr1 >> /config/nginx/.htpasswd"
+- `sh -c "echo -n 'admin:' > /config/nginx/.htpasswd"`
+- `sh -c "openssl passwd -apr1 >> /config/nginx/.htpasswd"`
 
 Sample run command:
 
-For rtorrent 0.9.6 version: \
-\
+For rtorrent 0.9.6 version:
+
+```bash
 docker run -d --name=rutorrent-flood \
 -v /share/Container/rutorrent-flood/config:/config \
 -v /share/Container/rutorrent-flood/downloads:/downloads \
@@ -42,10 +44,12 @@ docker run -d --name=rutorrent-flood \
 -p 9443:443 \
 -p 3000:3000 \
 -p 51415-51415:51415-51415 \
-romancin/rutorrent-flood:latest \
+romancin/rutorrent-flood:latest
+```
 
-For rtorrent 0.9.4 version: \
-\
+For rtorrent 0.9.4 version:
+
+```bash
 docker run -d --name=rutorrent-flood \
 -v /share/Container/rutorrent-flood/config:/config \
 -v /share/Container/rutorrent-flood/downloads:/downloads \
@@ -53,6 +57,7 @@ docker run -d --name=rutorrent-flood \
 -p 9443:443 \
 -p 3000:3000 \
 -p 51415-51415:51415-51415 \
-romancin/rutorrent-flood:0.9.4 \
+romancin/rutorrent-flood:0.9.4
+```
 
-Rememeber editing /config/rtorrent/rtorrent.rc with your own settings, specially your watch subfolder configuration.
+Remember editing `/config/rtorrent/rtorrent.rc` with your own settings, especially your watch subfolder configuration.
