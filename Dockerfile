@@ -131,7 +131,7 @@ git clone https://github.com/Gyran/rutorrent-pausewebui pausewebui && \
 git clone https://github.com/Gyran/rutorrent-ratiocolor ratiocolor && \
 sed -i 's/changeWhat = "cell-background";/changeWhat = "font";/g' /usr/share/webapps/rutorrent/plugins/ratiocolor/init.js && \
 git clone https://github.com/Gyran/rutorrent-instantsearch instantsearch && \
-git clone https://github.com/astupidmoose/rutorrent-logoff logoff && \
+git clone https://github.com/Korni22/rutorrent-logoff logoff && \
 git clone https://github.com/xombiemp/rutorrentMobile && \
 git clone https://github.com/dioltas/AddZip && \
 
