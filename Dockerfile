@@ -9,10 +9,10 @@ ARG BUILD_CORES
 LABEL build_version="Romancin version:- ${VERSION} Build-date:- ${BUILD_DATE}"
 
 # package version
-ARG MEDIAINF_VER="17.12"
+ARG MEDIAINF_VER="18.03.1"
 ARG RTORRENT_VER="0.9.4"
 ARG LIBTORRENT_VER="0.13.4"
-ARG CURL_VER="7.57.0"
+ARG CURL_VER="7.59.0"
 ARG FLOOD_VER="1.0.0"
 
 # set env
@@ -131,7 +131,6 @@ git clone https://github.com/Gyran/rutorrent-pausewebui pausewebui && \
 git clone https://github.com/Gyran/rutorrent-ratiocolor ratiocolor && \
 sed -i 's/changeWhat = "cell-background";/changeWhat = "font";/g' /usr/share/webapps/rutorrent/plugins/ratiocolor/init.js && \
 git clone https://github.com/Gyran/rutorrent-instantsearch instantsearch && \
-git clone https://github.com/Korni22/rutorrent-logoff logoff && \
 git clone https://github.com/xombiemp/rutorrentMobile && \
 git clone https://github.com/dioltas/AddZip && \
 
@@ -189,7 +188,6 @@ wget -qO- https://github.com/rakshasa/rtorrent/archive/${RTORRENT_VER}.tar.gz | 
 
 # install flood webui
  apk add --no-cache \
-     --repository http://dl-cdn.alpinelinux.org/alpine/v3.7/main \
      python \
      nodejs \
      nodejs-npm && \
@@ -198,7 +196,8 @@ wget -qO- https://github.com/rakshasa/rtorrent/archive/${RTORRENT_VER}.tar.gz | 
  cd /usr/flood && \
  git clone https://github.com/jfurrow/flood . && \
  cp config.template.js config.js && \
- npm install --build-from-source=bcrypt && \
+ npm install && \
+ npm cache clean --force && \
  npm run build && \
  rm config.js && \
 
