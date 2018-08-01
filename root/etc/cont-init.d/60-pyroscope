@@ -12,6 +12,7 @@ if [[ ! -d /config/.pyroscope ]];then
       su -c '~/.local/pyroscope/update-to-head.sh' abc
       su - -c 'pyroadmin --create-config' abc
       su -c 'rm /config/.pyroscope/config.ini' abc
+      su -c 'touch ~/.pyroscope/run/pyrotorque' abc
 fi
 
 [[ ! -e /config/.pyroscope/config.ini ]] && \
