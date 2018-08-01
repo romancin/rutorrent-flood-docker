@@ -1,0 +1,21 @@
+#!/usr/bin/with-contenv bash
+
+usermod -s /bin/ash abc
+
+# make folders
+if [[ ! -d /config/.pyroscope ]];then
+      su -c "mkdir -p /config/.pyroscope" abc
+      su -c "mkdir -p ~/bin ~/.local" abc
+      su -c 'git clone "https://github.com/pyroscope/pyrocore.git" ~/.local/pyroscope' abc
+      su -c "echo 'export PYRO_CONFIG_DIR=/config/.pyroscope' >> ~/.profile" abc
+      su -c "echo 'export PATH=$PATH:~/bin' >> ~/.profile" abc
+      su -c '~/.local/pyroscope/update-to-head.sh' abc
+      su - -c 'pyroadmin --create-config' abc
+      su -c 'rm /config/.pyroscope/config.ini' abc
+fi
+
+[[ ! -e /config/.pyroscope/config.ini ]] && \
+        cp /defaults/config.ini /config/.pyroscope/config.ini
+
+# permissions
+chown -R abc:abc /config/.pyroscope

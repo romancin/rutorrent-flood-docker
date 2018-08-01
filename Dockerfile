@@ -9,10 +9,10 @@ ARG BUILD_CORES
 LABEL build_version="Romancin version:- ${VERSION} Build-date:- ${BUILD_DATE}"
 
 # package version
-ARG MEDIAINF_VER="18.03.1"
+ARG MEDIAINF_VER="18.05"
 ARG RTORRENT_VER="0.9.6"
 ARG LIBTORRENT_VER="0.13.6"
-ARG CURL_VER="7.59.0"
+ARG CURL_VER="7.61.0"
 ARG FLOOD_VER="1.0.0"
 
 # set env

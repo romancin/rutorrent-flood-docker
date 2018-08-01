@@ -19,6 +19,10 @@ Also installed and selected by default this awesome theme: club-QuickBox
 
 Also includes MaterialDesign theme as an option.
 
+01/08/2018: NEW: Includes Pyrocore/rtcontrol - http://pyrocore.readthedocs.io/en/latest/index.html
+
+You need to run pyrocore commands with user "abc", which is who runs rtorrent, so use "su - abc" after connecting container before using pyrocore commands. If you already have torrents in your rtorrent docker instance, you have to add extra information before usinf pyrocore, check here: http://pyrocore.readthedocs.io/en/latest/setup.html in the "Adding Missing Data to Your rTorrent Session" topic.
+
 Tested and working on Synology and QNAP, but should work on any x86_64 devices.
 
 Instructions: 
