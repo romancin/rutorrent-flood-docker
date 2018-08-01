@@ -9,10 +9,10 @@ ARG BUILD_CORES
 LABEL build_version="Romancin version:- ${VERSION} Build-date:- ${BUILD_DATE}"
 
 # package version
-ARG MEDIAINF_VER="18.03.1"
-ARG RTORRENT_VER="0.9.6"
-ARG LIBTORRENT_VER="0.13.6"
-ARG CURL_VER="7.59.0"
+ARG MEDIAINF_VER="18.05"
+ARG RTORRENT_VER="0.9.4"
+ARG LIBTORRENT_VER="0.13.4"
+ARG CURL_VER="7.61.0"
 ARG FLOOD_VER="1.0.0"
 
 # set env
@@ -23,6 +23,7 @@ ENV CONTEXT_PATH=/
     
 RUN NB_CORES=${BUILD_CORES-`getconf _NPROCESSORS_CONF`} && \
  apk add --no-cache \
+	bash-completion \
         ca-certificates \
         fcgi \
         ffmpeg \
@@ -196,6 +197,7 @@ wget -qO- https://github.com/rakshasa/rtorrent/archive/${RTORRENT_VER}.tar.gz | 
  cd /usr/flood && \
  git clone https://github.com/jfurrow/flood . && \
  cp config.template.js config.js && \
+ npm install -g node-gyp && \
  npm install && \
  npm cache clean --force && \
  npm run build && \
