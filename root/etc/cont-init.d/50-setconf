@@ -8,7 +8,6 @@ mkdir -p /config/tmp /detach_sess
 [[ ! -L /config/.irssi/scripts/autorun/autodl-irssi.pl ]] && ln -s /config/.irssi/scripts/autodl-irssi.pl /config/.irssi/scripts/autorun/autodl-irssi.pl
 [[ ! -f /config/.irssi/config ]] && cp /defaults/config.irssi /config/.irssi/config
 [[ ! -f /config/.autodl/autodl.cfg ]] && cp /defaults/autodl.cfg /config/.autodl/autodl.cfg
-[[ ! -f /config/.autodl/autodl2.cfg ]] && cp /defaults/autodl2.cfg /config/.autodl/autodl2.cfg
 [[ ! -f /usr/share/webapps/rutorrent/plugins/autodl-irssi/conf.php ]] && cp /defaults/conf.php /usr/share/webapps/rutorrent/plugins/autodl-irssi/conf.php
 [[ ! -f /config/flood/config.js ]] && cp /defaults/config.js /config/flood/config.js
 [[ ! -L /usr/flood/config.js ]] && ln -s /config/flood/config.js /usr/flood/config.js && sed -i -e "s|<FLOOD_SECRET>|$FLOOD_SECRET|g" /config/flood/config.js && sed -i -e "s|<CONTEXT_PATH>|$CONTEXT_PATH|g" /config/flood/config.js
