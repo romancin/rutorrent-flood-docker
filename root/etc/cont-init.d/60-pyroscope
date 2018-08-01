@@ -14,7 +14,7 @@ if [[ ! -d /config/.pyroscope ]];then
       su -c 'rm /config/.pyroscope/config.ini' abc
       su -c 'touch ~/.pyroscope/run/pyrotorque' abc
       su -c 'touch ~/.bash_completion' abc
-      su -c 'grep /\.pyroscope/ ~/.bash_completion >/dev/null || echo >>.bash_completion ". ~/.pyroscope/bash-completion.default"' abc
+      su -c 'grep /\.pyroscope/ ~/.bash_completion >/dev/null || echo >> /config/.bash_completion ". ~/.pyroscope/bash-completion.default"' abc
       su -c '. ~/.bash_completion' abc
 
 fi
