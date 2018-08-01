@@ -147,7 +147,6 @@ schedule = session_save,240,300,session_save=
 #
 # PyroScope SETTINGS
 #
-
 method.insert = cfg.basedir, private|const|string, (cat,"/config/.pyroscope/")
 
 # `system.has` polyfill (the "false=" silences the `catch` command, in rTorrent-PS)
