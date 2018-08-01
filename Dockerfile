@@ -196,6 +196,7 @@ wget -qO- https://github.com/rakshasa/rtorrent/archive/${RTORRENT_VER}.tar.gz | 
  cd /usr/flood && \
  git clone https://github.com/jfurrow/flood . && \
  cp config.template.js config.js && \
+ npm install -g node-gyp && \
  npm install && \
  npm cache clean --force && \
  npm run build && \
