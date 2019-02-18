@@ -10,7 +10,7 @@ if [[ ! -d /config/.pyroscope ]];then
       su -c "echo 'export PYRO_CONFIG_DIR=/config/.pyroscope' >> ~/.profile" abc
       su -c "echo 'export PATH=$PATH:~/bin' >> ~/.profile" abc
       su -c '~/.local/pyroscope/update-to-head.sh' abc
-      su - -c 'pyroadmin --create-config' abc
+      su - -c '/config/bin/pyroadmin --create-config' abc
       su -c 'rm /config/.pyroscope/config.ini' abc
       su -c 'touch ~/.pyroscope/run/pyrotorque' abc
       su -c 'touch ~/.bash_completion' abc
