@@ -181,6 +181,8 @@ RUN  apk add --no-cache \
        python \
        nodejs \
        nodejs-npm && \
+     apk add --no-cache --virtual=build-dependencies \
+       build-base && \
      mkdir /usr/flood && \
      cd /usr/flood && \
      git clone https://github.com/jfurrow/flood . && \
@@ -190,6 +192,7 @@ RUN  apk add --no-cache \
      npm run build && \
      npm prune --production && \
      rm config.js && \
+     apk del --purge build-dependencies
 
 # add local files
 COPY root/ /
