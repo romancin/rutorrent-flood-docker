@@ -19,6 +19,8 @@ Also installed and selected by default this awesome theme: club-QuickBox
 
 Also includes MaterialDesign theme as an option.
 
+**IMPORTANT**: In newer versions of flood it is needed to specify how is the connection to rtorrent established in the first user creation window. Specify "Unix Socket" type and "/run/php/.rtorrent.sock" in the rTorrent Socket field.
+
 17/03/2018: NEW: rTorrent 0.9.7 / libtorrent 0.13.7 version. rtorrent.rc file has changed completely, rename it before starting with the new image the first time. After first run, add the changes you need to this config file.
 
 01/08/2018: NEW: Includes Pyrocore/rtcontrol - http://pyrocore.readthedocs.io/en/latest/index.html
@@ -48,6 +50,7 @@ docker run -d --name=rutorrent \
 -v /share/Container/rutorrent/downloads:/downloads \
 -e PGID=0 -e PUID=0 -e TZ=Europe/Madrid \
 -p 9443:443 \
+-p 3000:3000 \
 -p 51415-51415:51415-51415 \
 romancin/rutorrent:latest
 ```
