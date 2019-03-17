@@ -16,7 +16,7 @@ if [[ ! -d /config/.pyroscope ]];then
       su -c 'touch ~/.bash_completion' abc
       su -c 'grep /\.pyroscope/ ~/.bash_completion >/dev/null || echo >> /config/.bash_completion ". ~/.pyroscope/bash-completion.default"' abc
       su -c '. ~/.bash_completion' abc
-
+      su -c "find /config/.pyroscope -type f |xargs sed -i 's/\~\//\/config\//g'" abc
 fi
 
 [[ ! -e /config/.pyroscope/config.ini ]] && \
