@@ -18,3 +18,5 @@ const CONFIG = {
   sslCert: '/config/nginx/cert.pem',
   torrentClientPollInterval: 1000 * 2
 };
+
+module.exports = CONFIG;
