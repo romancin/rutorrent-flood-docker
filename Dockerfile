@@ -192,7 +192,8 @@ RUN  apk add --no-cache \
      npm run build && \
      npm prune --production && \
      rm config.js && \
-     apk del --purge build-dependencies
+     apk del --purge build-dependencies && \
+     ln -s /usr/local/bin/mediainfo /usr/bin/mediainfo 
 
 # add local files
 COPY root/ /
