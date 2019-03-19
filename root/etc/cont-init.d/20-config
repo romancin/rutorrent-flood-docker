@@ -10,7 +10,7 @@
 
 # make folders
 mkdir -p \
-	/config{/log/nginx,/log/rtorrent,/log/rutorrent,/nginx,/nginx/conf.d,/php,/rtorrent/rtorrent_sess,/rutorrent/settings/users,/.irssi,/flood} \
+	/config{/log/nginx,/log/rtorrent,/log/rutorrent,/nginx,/nginx/conf.d,/php,/rtorrent/rtorrent_sess,/rutorrent/settings/users,/.irssi,/flood,/flood-db} \
 	/config/rutorrent/profiles{/settings,/torrents,/users,/tmp} \
 	/downloads/{bajaunapeli,bitspyder,torrentfactory,hachede,hdcity,learnflakes,puntotorrent,tbplus,waffles,xbytes,otros,pedros,cinemaggedon,torrentland,tunetraxx,brokenstones,32pages,lztr,p2pelite,bitgamer,psytorrents,pleasuredome,hdspain,iptorrents,trancetraffic,morethantv,passthepopcorn,gp32spain,gazellegames,opencd,mteam,retrowithin,divteam,racingforme,bibliotik,beyondhd,myanonamouse,ultimategamer,x264,awesomehd,broadcasthenet,bitme,theplace,theshow,thegeeks,thevault,theempire,theoccult,torrentleech,hdbits,zonaq,torrentech,sceneaccess,efectodoppler,musicvids,apollo,passtheheadphones,notwhatcd} \
 	/downloads/watch/{bajaunapeli,bitspyder,torrentfactory,hachede,hdcity,learnflakes,puntotorrent,tbplus,waffles,xbytes,otros,pedros,cinemaggedon,torrentland,tunetraxx,brokenstones,32pages,lztr,p2pelite,bitgamer,psytorrents,pleasuredome,hdspain,iptorrents,trancetraffic,morethantv,passthepopcorn,gp32spain,gazellegames,opencd,mteam,retrowithin,divteam,racingforme,bibliotik,beyondhd,myanonamouse,ultimategamer,x264,awesomehd,broadcasthenet,bitme,theplace,theshow,thegeeks,thevault,theempire,theoccult,torrentleech,hdbits,zonaq,torrentech,sceneaccess,efectodoppler,musicvids,apollo,passtheheadphones,notwhatcd} \
