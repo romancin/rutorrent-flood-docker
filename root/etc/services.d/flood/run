@@ -1,6 +1,3 @@
-#!/usr/bin/with-contenv bash
-
-cd /usr/flood || exit
-
-exec \
-	s6-setuidgid abc npm start
+#!/bin/sh
+cd /usr/flood
+npm start
