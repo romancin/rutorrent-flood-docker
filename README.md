@@ -45,14 +45,14 @@ Sample run command:
 For rtorrent 0.9.7 version:
  
  ```bash
-docker run -d --name=rutorrent \
--v /share/Container/rutorrent/config:/config \
--v /share/Container/rutorrent/downloads:/downloads \
+docker run -d --name=rutorrent-flood \
+-v /share/Container/rutorrent-flood/config:/config \
+-v /share/Container/rutorrent-flood/downloads:/downloads \
 -e PGID=0 -e PUID=0 -e TZ=Europe/Madrid \
 -p 9443:443 \
 -p 3000:3000 \
 -p 51415-51415:51415-51415 \
-romancin/rutorrent:latest
+romancin/rutorrent-flood:latest
 ```
 
 For rtorrent 0.9.6 version:
