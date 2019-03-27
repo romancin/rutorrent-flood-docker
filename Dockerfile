@@ -12,7 +12,7 @@ LABEL build_version="Romancin version:- ${VERSION} Build-date:- ${BUILD_DATE}"
 ARG MEDIAINF_VER="18.12"
 ARG RTORRENT_VER="v0.9.7"
 ARG LIBTORRENT_VER="v0.13.7"
-ARG CURL_VER="7.64.0"
+ARG CURL_VER="7.64.1"
 
 # set env
 ENV PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
