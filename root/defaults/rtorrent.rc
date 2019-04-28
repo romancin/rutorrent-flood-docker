@@ -95,13 +95,13 @@ network.xmlrpc.size_limit.set = 4M
 protocol.encryption.set = allow_incoming,try_outgoing,enable_retry
 
 # Set the umask for this process, which is applied to all files created by the program
-system.umask.set = 0027
+system.umask.set = 0022
 
 # Add a preferred filename encoding to the list
 encoding.add = utf8
 
 # Watch a directory for new torrents, and stop those that have been deleted
-schedule2 = watch_directory_99, 1, 10, (cat,"load.start=",(cfg.watch),"*.torrent")
+schedule2 = watch_directory_99,10,10,(cat,"load.start=",(cfg.watch),"*.torrent,d.custom1.set=/downloads/completed/")
 #schedule2 = untied_directory, 5, 5, (cat,"stop_untied=",(cfg.watch),"*.torrent")
 
 # watch subdirectory by tracker
@@ -169,15 +169,14 @@ schedule2 = watch_directory_60,10,10,(cat,"load.start=",(cfg.watch),"/notwhatcd/
 schedule2 = monitor_diskspace, 15, 60, ((close_low_diskspace,1000M))
 
 # Move finished (no need Autotools/Automove plugin on ruTorrent)
-method.insert = d.get_finished_dir, simple, "cat=$cfg.download_complete=,$d.custom1="
 method.insert = d.move_to_complete, simple, "d.directory.set=$argument.1=; execute=mkdir,-p,$argument.1=; execute=mv,-u,$argument.0=,$argument.1=; d.save_full_session="
-method.set_key = event.download.finished,move_complete,"d.move_to_complete=$d.data_path=,$d.get_finished_dir="
+method.set_key = event.download.finished,move_complete,"d.move_to_complete=$d.data_path=,$d.custom1="
 
 # Commit session data
 schedule2 = session_save,240,300,session_save=
 
 # Erase data when torrent deleted (no need erasedata plugin on ruTorrent)
-method.set_key = event.download.erased,delete_erased,"execute=rm,-rf,--,$d.data_path="
+#method.set_key = event.download.erased,delete_erased,"execute=rm,-rf,--,$d.data_path="
 
 # Telegram Notifications
 #method.set_key = event.download.finished,notify_me,"execute=/config/rtorrent/notify_telegram.sh,$d.name="

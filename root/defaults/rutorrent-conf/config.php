@@ -45,6 +45,8 @@
 		"gzip"	=> '/usr/bin/gzip',			// Something like /usr/bin/gzip. If empty, will be found in PATH.
 		"id"	=> '/usr/bin/id',			// Something like /usr/bin/id. If empty, will be found in PATH.
 		"stat"	=> '/bin/stat',			// Something like /usr/bin/stat. If empty, will be found in PATH.
+                "pgrep" => '/usr/bin/pgrep',
+                "python" => '/usr/bin/python3',
 	);
 
 	$localhosts = array( 			// list of local interfaces

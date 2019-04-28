@@ -16,6 +16,7 @@ chown -R abc:abc /usr/share/webapps/rutorrent/plugins/autodl-irssi/)
 
 # get updated trackers for irssi-autodl
 wget --quiet -O /tmp/trackers.zip https://github.com/autodl-community/autodl-trackers/archive/master.zip && \
+[[ ! -d /config/.irssi/scripts/AutodlIrssi/trackers ]] && mkdir -p /config/.irssi/scripts/AutodlIrssi/trackers && \
 cd /config/.irssi/scripts/AutodlIrssi/trackers && \
 unzip -q -o -j /tmp/trackers.zip && \
 rm /tmp/trackers.zip

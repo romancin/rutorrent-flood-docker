@@ -13,9 +13,11 @@ services:
         - PUID=0
         - PGID=0
         - TZ=Europe/Madrid
+        - CREATE_SUBDIR_BY_TRACKERS=NO
       ports:
         - "7443:443"
-        - "42316:52316"
+        - "32316:52316"
+        - "3002:3000"
 networks:
   default:
     external:
