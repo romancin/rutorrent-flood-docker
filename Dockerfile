@@ -13,6 +13,7 @@ ARG MEDIAINF_VER="19.04"
 ARG RTORRENT_VER="0.9.4"
 ARG LIBTORRENT_VER="0.13.4"
 ARG CURL_VER="7.64.1"
+ARG GEOIP_VER="1.1.1"
 
 # set env
 ENV PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
@@ -27,6 +28,7 @@ RUN NB_CORES=${BUILD_CORES-`getconf _NPROCESSORS_CONF`} && \
         fcgi \
         ffmpeg \
         geoip \
+	geoip-dev \
         gzip \
         logrotate \
         nginx \
@@ -56,8 +58,13 @@ RUN NB_CORES=${BUILD_CORES-`getconf _NPROCESSORS_CONF`} && \
         php7-mbstring \
         php7-sockets \
         php7-pear \
-	 python \
-	 python3 && \
+	php7-opcache \
+        php7-apcu \
+        php7-ctype \
+        php7-dev \
+        php7-phar \
+        python \
+        python3 && \
 # install build packages
  apk add --no-cache --virtual=build-dependencies \
         autoconf \
@@ -126,6 +133,20 @@ sed -i 's/changeWhat = "cell-background";/changeWhat = "font";/g' /usr/share/web
 git clone https://github.com/Gyran/rutorrent-instantsearch instantsearch && \
 git clone https://github.com/xombiemp/rutorrentMobile && \
 git clone https://github.com/dioltas/AddZip && \
+git clone https://github.com/Micdu70/geoip2-rutorrent geoip2 && \
+rm -rf geoip && \
+mkdir -p /usr/share/GeoIP && \
+cd /usr/share/GeoIP && \
+wget https://geolite.maxmind.com/download/geoip/database/GeoLite2-City.tar.gz && \
+wget https://geolite.maxmind.com/download/geoip/database/GeoLite2-Country.tar.gz && \
+tar xzf GeoLite2-City.tar.gz && \
+tar xzf GeoLite2-Country.tar.gz && \
+rm -f *.tar.gz && \
+mv GeoLite2-*/*.mmdb . && \
+cp *.mmdb /usr/share/webapps/rutorrent/plugins/geoip2/database/ && \
+pecl install geoip-${GEOIP_VER} && \
+chmod +x /usr/lib/php7/modules/geoip.so && \
+echo ";extension=geoip.so" >> /etc/php7/php.ini && \
 # install autodl-irssi perl modules
  perl -MCPAN -e 'my $c = "CPAN::HandleConfig"; $c->load(doit => 1, autoconfig => 1); $c->edit(prerequisites_policy => "follow"); $c->edit(build_requires_install_policy => "yes"); $c->commit' && \
  curl -L http://cpanmin.us | perl - App::cpanminus && \
