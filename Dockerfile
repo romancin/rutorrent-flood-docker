@@ -118,7 +118,6 @@ mv rutorrent-thirdparty-plugins/* . && \
 rm -rf rutorrent-thirdparty-plugins && \
 cd /usr/share/webapps/rutorrent/ && \
 chmod 755 plugins/filemanager/scripts/* && \
-rm -rf plugins/fileupload && \
 cd /tmp && \
 git clone https://github.com/mcrapet/plowshare.git && \
 cd plowshare/ && \
@@ -199,25 +198,6 @@ wget -qO- https://github.com/rakshasa/rtorrent/archive/${RTORRENT_VER}.tar.gz | 
 # apk del -X http://dl-cdn.alpinelinux.org/alpine/v3.6/main cppunit-dev && \
  rm -rf \
         /tmp/*
-
-# install flood webui
-RUN  apk add --no-cache \
-       python \
-       nodejs \
-       nodejs-npm && \
-     apk add --no-cache --virtual=build-dependencies \
-       build-base && \
-     mkdir /usr/flood && \
-     cd /usr/flood && \
-     git clone https://github.com/jfurrow/flood . && \
-     cp config.template.js config.js && \
-     npm install && \
-     npm cache clean --force && \
-     npm run build && \
-     npm prune --production && \
-     rm config.js && \
-     apk del --purge build-dependencies && \
-     ln -s /usr/local/bin/mediainfo /usr/bin/mediainfo 
 
 # add local files
 COPY root/ /

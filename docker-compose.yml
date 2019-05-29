@@ -1,24 +1,22 @@
-version: '2'
+version: 3
 services:
-    rutorrent-develop:
-      image: romancin/rutorrent-flood:develop
-      container_name: rutorrent-flood-develop
-      networks:
-        - default
-      tty: true
-      volumes:
-        - /share/Container/rutorrent-flood-develop:/config
-        - /share/Container/rutorrent-flood-develop/downloads:/downloads
-      environment:
-        - PUID=0
-        - PGID=0
-        - TZ=Europe/Madrid
-        - CREATE_SUBDIR_BY_TRACKERS=NO
-      ports:
-        - "7443:443"
-        - "32316:52316"
-        - "3002:3000"
-networks:
-  default:
-    external:
-      name: main_network
+  rutorrent-flood:
+    image: tarek369/rutorrent:beta
+    container_name: rutorrent-beta
+    volumes:
+      - '/share/Container/rutorrent-flood/config:/config'
+      - '/share/Container/rutorrent-flood/downloads:/downloads'
+    environment:
+      - PGID=0
+      - PUID=0
+      - TZ=Europe/Madrid
+    ports:
+      - '51415-51415:51415-51415'
+    labels:
+      - traefik.enable=true
+      - traefik.frontend.rule=Host:rtorrent.a.ganglia.io
+      - traefik.port=8080
+      - traefik.docker.network=traefik_proxy
+    networks:
+      - proxy
+      - torrent
