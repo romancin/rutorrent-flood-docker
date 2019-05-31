@@ -14,7 +14,7 @@ services:
       - '51415-51415:51415-51415'
     labels:
       - traefik.enable=true
-      - traefik.frontend.rule=Host:rtorrent.a.ganglia.io
+      - traefik.frontend.rule=Host:rtorrent.xxxx.com
       - traefik.port=8080
       - traefik.docker.network=traefik_proxy
     networks:
