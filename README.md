@@ -44,76 +44,29 @@ In order to change rutorrent web access password execute this inside container:
 
 ## Sample run command
 
-For rtorrent 0.9.7 version:
- 
- ```bash
-docker run -d --name=rutorrent-flood \
--v /share/Container/rutorrent-flood/config:/config \
--v /share/Container/rutorrent-flood/downloads:/downloads \
+
+```
+version: 3
+services:
+  rutorrent-flood:
+    image: tarek369/rutorrent:beta
+    container_name: rutorrent-beta
+    volumes:
+      - '/share/Container/rutorrent-flood/config:/config'
+      - '/share/Container/rutorrent-flood/downloads:/downloads'
+    environment:
+      - PGID=0
+      - PUID=0
+      - TZ=Europe/Madrid
+    ports:
+      - '51415-51415:51415-51415'
+    labels:
+      - traefik.enable=true
+      - traefik.frontend.rule=Host:rtorrent.xxxx.com
+      - traefik.port=8080
+      - traefik.docker.network=traefik_proxy
+    networks:
+      - proxy
+      - torrent
+```
 -e PGID=0 -e PUID=0 -e TZ=Europe/Madrid \
--p 9443:443 \
--p 3000:3000 \
--p 51415-51415:51415-51415 \
-romancin/rutorrent-flood:latest
-```
-
-For rtorrent 0.9.6 version:
-
-```bash
-docker run -d --name=rutorrent-flood \
--v /share/Container/rutorrent-flood/config:/config \
--v /share/Container/rutorrent-flood/downloads:/downloads \
--e PGID=0 -e PUID=0 -e TZ=Europe/Madrid \
--p 9443:443 \
--p 3000:3000 \
--p 51415-51415:51415-51415 \
-romancin/rutorrent-flood:0.9.6
-```
-
-For rtorrent 0.9.4 version:
-
-```bash
-docker run -d --name=rutorrent-flood \
--v /share/Container/rutorrent-flood/config:/config \
--v /share/Container/rutorrent-flood/downloads:/downloads \
--e PGID=0 -e PUID=0 -e TZ=Europe/Madrid \
--p 9443:443 \
--p 3000:3000 \
--p 51415-51415:51415-51415 \
-romancin/rutorrent-flood:0.9.4
-```
-
-Remember editing `/config/rtorrent/rtorrent.rc` with your own settings, especially your watch subfolder configuration.
-
-## Environment variables supported
-
-| Variable | Function |
-| :----: | --- |
-| `-e PUID=1000` | for UserID - see below for explanation |
-| `-e PGID=1000` | for GroupID - see below for explanation |
-| `-e TZ=Europe/London` | Specify a timezone to use EG Europe/London. |
-| `-e CREATE_SUBDIR_BY_TRACKERS=YES` | YES to create downloads/watch subfolder for trackers (OLD BEHAVIOUR) or NO to create only completed/watch folder (DEFAULT) |
-
-## User / Group Identifiers
-
-When using volumes (`-v` flags) permissions issues can arise between the host OS and the container, we avoid this issue by allowing you to specify the user `PUID` and group `PGID`.
-
-Ensure any volume directories on the host are owned by the same user you specify and any permissions issues will vanish like magic.
-
-In this instance `PUID=1000` and `PGID=1000`, to find yours use `id user` as below:
-
-```
-  $ id username
-    uid=1000(dockeruser) gid=1000(dockergroup) groups=1000(dockergroup)
-```
-
-## Changelog
-v2.0.1 (29/04/2019): Added GeoIP2 plugin.
-
-v2.0 (28/04/2019): Updated image to rutorrent 3.9. For the first time, I have eliminated the creation of subfolder directories for trackers by default. Since this moment, you can choose to create them using CREATE_SUBDIR_BY_TRACKERS variable. 
-
-v1.0.1 (28/03/2019): curl 7.64.0 version has an issue that causes very high CPU usage in rtorrent. This version should fix this behaviour.
-
-v1.0.0 (16/03/2019): NEW: rTorrent 0.9.7 / libtorrent 0.13.7 version. rtorrent.rc file has changed completely, rename it before starting with the new image the first time. After first run, add the changes you need to this config file.
-
-vN/A: 05/08/2018: NEW: Includes Pyrocore/rtcontrol - http://pyrocore.readthedocs.io/en/latest/index.html
