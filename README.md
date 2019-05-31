@@ -26,9 +26,7 @@ Tested and working on Synology and QNAP, but should work on any x86_64 devices.
 
 ## Instructions
 
-- Map any local port to 443 for SSL rutorrent access (Default username/password is admin/admin) 
-- Map any local port to 51415 for rtorrent 
-- Map any local port to 3000 for SSL flood access
+- Map any local port to 8080 rutorrent access
 - Map a local volume to /config (Stores configuration data, including rtorrent session directory. Consider this on SSD Disk) 
 - Map a local volume to /downloads (Stores downloaded torrents)
 
