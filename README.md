@@ -69,4 +69,3 @@ services:
       - proxy
       - torrent
 ```
--e PGID=0 -e PUID=0 -e TZ=Europe/Madrid \
