@@ -28,7 +28,7 @@ RUN NB_CORES=${BUILD_CORES-`getconf _NPROCESSORS_CONF`} && \
         fcgi \
         ffmpeg \
         geoip \
-	geoip-dev \
+	 geoip-dev \
         gzip \
         logrotate \
         nginx \
@@ -58,11 +58,12 @@ RUN NB_CORES=${BUILD_CORES-`getconf _NPROCESSORS_CONF`} && \
         php7-mbstring \
         php7-sockets \
         php7-pear \
-	php7-opcache \
+	 php7-opcache \
         php7-apcu \
         php7-ctype \
         php7-dev \
         php7-phar \
+        php7-zip \
         python \
         python3 && \
 # install build packages
@@ -80,7 +81,6 @@ RUN NB_CORES=${BUILD_CORES-`getconf _NPROCESSORS_CONF`} && \
         build-base \
         libtool \
         subversion \
-        cppunit-dev \
         linux-headers \
         curl-dev \
         libressl-dev && \
@@ -199,7 +199,6 @@ wget -qO- https://github.com/rakshasa/rtorrent/archive/${RTORRENT_VER}.tar.gz | 
 # apk del -X http://dl-cdn.alpinelinux.org/alpine/v3.6/main cppunit-dev && \
  rm -rf \
         /tmp/*
-
 # install flood webui
 RUN  apk add --no-cache \
        python \
@@ -221,7 +220,7 @@ RUN  apk add --no-cache \
 
 # add local files
 COPY root/ /
-
+COPY VERSION /
 # ports and volumes
 EXPOSE 443 51415 3000
 VOLUME /config /downloads
