@@ -9,10 +9,11 @@ ARG BUILD_CORES
 LABEL build_version="Romancin version:- ${VERSION} Build-date:- ${BUILD_DATE}"
 
 # package version
-ARG MEDIAINF_VER="19.04"
+
+ARG MEDIAINF_VER="19.07"
 ARG RTORRENT_VER="0.9.4"
 ARG LIBTORRENT_VER="0.13.4"
-ARG CURL_VER="7.64.1"
+ARG CURL_VER="7.65.3"
 ARG GEOIP_VER="1.1.1"
 
 # set env
@@ -83,7 +84,9 @@ RUN NB_CORES=${BUILD_CORES-`getconf _NPROCESSORS_CONF`} && \
         subversion \
         linux-headers \
         curl-dev \
-        libressl-dev && \
+        libressl-dev \
+        python3-dev \
+        libffi-dev && \
 # compile curl to fix ssl for rtorrent
 cd /tmp && \
 mkdir curl && \
@@ -101,7 +104,7 @@ ldconfig /usr/bin && ldconfig /usr/lib && \
         /defaults/rutorrent-conf/ && \
  rm -rf \
         /defaults/rutorrent-conf/users && \
-  pip3 install CfScrape && \
+  pip3 install CfScrape cloudscraper && \
 # install webui extras
 # QuickBox Theme
 git clone https://github.com/QuickBox/club-QuickBox /usr/share/webapps/rutorrent/plugins/theme/themes/club-QuickBox && \
