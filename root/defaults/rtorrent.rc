@@ -169,8 +169,8 @@ schedule2 = watch_directory_60,10,10,(cat,"load.start=",(cfg.watch),"/notwhatcd/
 schedule2 = monitor_diskspace, 15, 60, ((close_low_diskspace,1000M))
 
 # Move finished (no need Autotools/Automove plugin on ruTorrent)
-method.insert = d.move_to_complete, simple, "d.directory.set=$argument.1=; execute=mkdir,-p,$argument.1=; execute=mv,-u,$argument.0=,$argument.1=; d.save_full_session="
-method.set_key = event.download.finished,move_complete,"d.move_to_complete=$d.data_path=,$d.custom1="
+#method.insert = d.move_to_complete, simple, "d.directory.set=$argument.1=; execute=mkdir,-p,$argument.1=; execute=mv,-u,$argument.0=,$argument.1=; d.save_full_session="
+#method.set_key = event.download.finished,move_complete,"d.move_to_complete=$d.data_path=,$d.custom1="
 
 # Commit session data
 schedule2 = session_save,240,300,session_save=
