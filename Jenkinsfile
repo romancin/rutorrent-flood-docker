@@ -16,9 +16,9 @@ pipeline {
                 script {
                     def version = readFile('VERSION')
                     def versions = version.split('\\.')
-                    def major = '0.9.7-' + versions[0]
-                    def minor = '0.9.7-' + versions[0] + '.' + versions[1]
-                    def patch = '0.9.7-' + version.trim()
+                    def major = '0.9.8-' + versions[0]
+                    def minor = '0.9.8-' + versions[0] + '.' + versions[1]
+                    def patch = '0.9.8-' + version.trim()
                     docker.withRegistry('', registryCredential) {
                         def image = docker.build registry + ":latest"
                         image.push()
