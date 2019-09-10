@@ -202,8 +202,7 @@ wget -qO- https://github.com/rakshasa/rtorrent/archive/${RTORRENT_VER}.tar.gz | 
 # cleanup
  apk del --purge \
         build-dependencies && \
- apk del -X http://dl-cdn.alpinelinux.org/alpine/v3.6/main 
-t-dev && \
+ apk del -X http://dl-cdn.alpinelinux.org/alpine/v3.6/main cppunit-dev && \
  rm -rf \
         /tmp/*
 # install flood webui
