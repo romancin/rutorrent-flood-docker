@@ -1,6 +1,6 @@
 pipeline {
   environment {
-    registry = "romancin/rutorrent-flood"
+    registry = "romancin/rutorrent"
     registryCredential = 'dockerhub'
   }
   agent any
@@ -8,7 +8,7 @@ pipeline {
     stage('Cloning Git Repository') {
       steps {
         git url: 'https://github.com/romancin/rutorrent-flood-docker.git',
-            branch: '0.9.4'
+            branch: 'develop'
       }
     }
     stage('Building image and pushing it to the registry') {
@@ -33,7 +33,7 @@ pipeline {
  }
  post {
         success {
-            telegramSend '[Jenkins] - Pipeline CI-rutorrent-flood-docker $BUILD_URL finalizado con estado :: $BUILD_STATUS'    
+            telegramSend '[Jenkins] - Pipeline CI-rutorrent-docker $BUILD_URL finalizado con estado :: $BUILD_STATUS'    
         }
     }
 }
