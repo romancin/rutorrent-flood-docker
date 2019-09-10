@@ -8,7 +8,7 @@ pipeline {
     stage('Cloning Git Repository') {
       steps {
         git url: 'https://github.com/romancin/rutorrent-flood-docker.git',
-            branch: 'develop'
+            branch: '0.9.7'
       }
     }
     stage('Building image and pushing it to the registry') {
