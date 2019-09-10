@@ -1,0 +1,5 @@
+#!/usr/bin/with-contenv bash
+
+if [ ${RT_TOKEN} != "" ] && [ ${RT_MASTERS} != "" ];then
+  su abc -c "/usr/bin/rtelegram -token=${RT_TOKEN} -masters=${RT_MASTERS} -url=/run/php/.rtorrent.sock -logfile=/config/log/rtelegram/rtelegram.log"
+fi
