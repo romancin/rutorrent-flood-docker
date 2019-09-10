@@ -23,6 +23,8 @@ Also includes MaterialDesign theme as an option.
 
 You need to run pyrocore commands with user "abc", which is who runs rtorrent, so use "su - abc" after connecting container before using pyrocore commands. If you already have torrents in your rtorrent docker instance, you have to add extra information before using pyrocore, check here: http://pyrocore.readthedocs.io/en/latest/setup.html in the "Adding Missing Data to Your rTorrent Session" topic.
 
+rTelegram is added, that will allow you to control your rtorrent instance from Telegram client.
+
 Tested and working on Synology and QNAP, but should work on any x86_64 devices.
 
 ## Instructions
@@ -93,6 +95,8 @@ Remember editing `/config/rtorrent/rtorrent.rc` with your own settings, especial
 | `-e PGID=1000` | for GroupID - see below for explanation |
 | `-e TZ=Europe/London` | Specify a timezone to use EG Europe/London. |
 | `-e CREATE_SUBDIR_BY_TRACKERS=YES` | YES to create downloads/watch subfolder for trackers (OLD BEHAVIOUR) or NO to create only completed/watch folder (DEFAULT) |
+| `-e RT_TOKEN=your_bot_token` | for your Telegram BOT Token - [see rtelegram documentation for instructions](https://github.com/pyed/rtelegram/wiki/Getting-started). If not used, rtelegram won't start on boot. |
+| `-e RT_MASTERS=your_real_telegram_username` | for your Telegram real username - [see rtelegram documentation for instructions](https://github.com/pyed/rtelegram/wiki/Getting-started). If not used, rtelegram won't start on boot. |
 
 ## User / Group Identifiers
 
@@ -108,6 +112,8 @@ In this instance `PUID=1000` and `PGID=1000`, to find yours use `id user` as bel
 ```
 
 ## Changelog
+v2.2.0 (09/09/2019): Added [rtelegram](https://github.com/pyed/rtelegram). It allows to control rtorrent from Telegram.
+
 v2.1.0 (10/08/2019): Fixed cloudflare plugin. New 0.9.7 branch. Master branch updated to rtorrent/libtorrent 0.9.8/0.13.8.
 
 v2.0.1 (29/04/2019): Added GeoIP2 plugin.
