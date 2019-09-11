@@ -32,8 +32,8 @@ pipeline {
                 }
                 script {
                   withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'DOCKERHUB_PASSWORD', usernameVariable: 'DOCKERHUB_USERNAME')]) {
-                    docker.image('readme-to-hub').withRun('-v README.md:/data/README.md') {
-                      docker.image('readme-to-hub').inside("--env DOCKERHUB_USERNAME ${env.DOCKERHUB_USERNAME} --env DOCKERHUB_PASSWORD ${env.DOCKERHUB_PASSWORD} --env DOCKERHUB_REPO_NAME ${env.repository}")
+                    docker.image('sheogorath/readme-to-dockerhub').withRun('-v README.md:/data/README.md') {
+                      docker.image('sheogorath/readme-to-dockerhub').inside("--env DOCKERHUB_USERNAME ${env.DOCKERHUB_USERNAME} --env DOCKERHUB_PASSWORD ${env.DOCKERHUB_PASSWORD} --env DOCKERHUB_REPO_NAME ${env.repository}")
                       }
                     }
                 }
