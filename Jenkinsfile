@@ -1,7 +1,11 @@
 pipeline {
   environment {
     registry = "romancin/rutorrent-flood"
+<<<<<<< HEAD
     withCredentials = 'dockerhub'
+=======
+    registryCredential = 'dockerhub'
+>>>>>>> d0616ad49b7066d14b6891adfd7747f59713ac84
   }
   agent any
   stages {
