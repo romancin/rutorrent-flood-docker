@@ -1,6 +1,7 @@
 pipeline {
   environment {
     registry = "romancin/rutorrent-flood"
+    repository = "rutorrent-flood"
     withCredentials = 'dockerhub'
     registryCredential = 'dockerhub'
   }
@@ -31,7 +32,7 @@ pipeline {
                 }
                 script {
                   withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'DOCKERHUB_PASSWORD', usernameVariable: 'DOCKERHUB_USERNAME')]) {
-                    docker.image(readme-to-hub).inside("-v ./README.md:/data/README.md --env DOCKERHUB_USERNAME ${env.DOCKERHUB_USERNAME} --env DOCKERHUB_PASSWORD ${env.DOCKERHUB_PASSWORD} --env DOCKERHUB_REPO_NAME ${env.registry}")
+                    docker.image(readme-to-hub).inside("-v ./README.md:/data/README.md --env DOCKERHUB_USERNAME ${env.DOCKERHUB_USERNAME} --env DOCKERHUB_PASSWORD ${env.DOCKERHUB_PASSWORD} --env DOCKERHUB_REPO_NAME ${env.repository}")
                  }
                 }
                 }
