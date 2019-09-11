@@ -1,7 +1,7 @@
 pipeline {
   environment {
-    registry = "romancin/rutorrent"
-    registryCredential = 'dockerhub'
+    registry = "romancin/rutorrent-flood"
+    withCredentials = 'dockerhub'
   }
   agent any
   stages {
@@ -28,12 +28,18 @@ pipeline {
                         image.push(patch)
                     }
                 }
+                script {
+                  /withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'DOCKERHUB_PASSWORD', usernameVariable: 'DOCKERHUB_USERNAME')]) {
+                    docker.image(readme-to-hub).inside("-v ./README.md:/data/README.md --env DOCKERHUB_USERNAME ${env.DOCKERHUB_USERNAME} --env DOCKERHUB_PASSWORD ${env.DOCKERHUB_PASSWORD} --env DOCKERHUB_REPO_NAME ${env.registry}")
+                 }
+                }
+                }
             }
     }
- }
  post {
         success {
             telegramSend '[Jenkins] - Pipeline CI-rutorrent-docker $BUILD_URL finalizado con estado :: $BUILD_STATUS'    
         }
     }
 }
+
