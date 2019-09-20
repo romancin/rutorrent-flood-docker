@@ -234,5 +234,5 @@ COPY root/ /
 COPY VERSION /
 
 # ports and volumes
-EXPOSE 443 51415
+EXPOSE 443 51415 3000
 VOLUME /config /downloads
