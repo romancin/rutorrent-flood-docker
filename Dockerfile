@@ -144,6 +144,7 @@ git clone https://github.com/Micdu70/geoip2-rutorrent geoip2 && \
 rm -rf geoip && \
 mkdir -p /usr/share/GeoIP && \
 cd /usr/share/GeoIP && \
+echo DEBUG: Maxmind license: $MAXMIND_LICENSE_KEY && \
 wget https://download.maxmind.com/app/geoip_download?edition_id=GeoLite2-City&license_key=$MAXMIND_LICENSE_KEY&suffix=tar.gz && \
 wget https://download.maxmind.com/app/geoip_download?edition_id=GeoLite2-Country&license_key=$MAXMIND_LICENSE_KEY&suffix=tar.gz && \
 tar xzf GeoLite2-City.tar.gz && \
