@@ -66,7 +66,8 @@ RUN NB_CORES=${BUILD_CORES-`getconf _NPROCESSORS_CONF`} && \
         php7-ctype \
         php7-dev \
         php7-phar \
-	 php7-zip \
+	php7-zip \
+        php7-bcmath \
         python \
         python3 && \
 # install build packages
