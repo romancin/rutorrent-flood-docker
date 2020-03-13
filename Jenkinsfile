@@ -4,6 +4,7 @@ pipeline {
     repository = "rutorrent-flood"
     withCredentials = 'dockerhub'
     registryCredential = 'dockerhub'
+    MAXMIND_LICENSE_KEY = credentials('maxmind-license-key')
   }
   agent any
   stages {
@@ -27,7 +28,7 @@ pipeline {
           def minor = gitbranch + '-' + versions[0] + '.' + versions[1]
           def patch = gitbranch + '-' + version.trim()
           docker.withRegistry('', registryCredential) {
-            def image = docker.build("$registry:$gitbranch", "--build-arg BASEIMAGE_VERSION=3.8 --build-arg RTORRENT_VER=v0.9.4 --build-arg LIBTORRENT_VER=v0.13.4 -f Dockerfile .")
+            def image = docker.build("$registry:$gitbranch", "--build-arg BASEIMAGE_VERSION=3.8 --build-arg RTORRENT_VER=v0.9.4 --build-arg LIBTORRENT_VER=v0.13.4 --build-arg MAXMIND_LICENSE_KEY=${MAXMIND_LICENSE_KEY} -f Dockerfile .")
             image.push()
             image.push(base)
             image.push(major)
@@ -51,7 +52,7 @@ pipeline {
           def minor = gitbranch + '-' + versions[0] + '.' + versions[1]
           def patch = gitbranch + '-' + version.trim()
           docker.withRegistry('', registryCredential) {
-            def image = docker.build("$registry:$gitbranch", "--build-arg BASEIMAGE_VERSION=3.8 --build-arg RTORRENT_VER=v0.9.6 --build-arg LIBTORRENT_VER=v0.13.6 -f Dockerfile .")
+            def image = docker.build("$registry:$gitbranch", "--build-arg BASEIMAGE_VERSION=3.8 --build-arg RTORRENT_VER=v0.9.6 --build-arg LIBTORRENT_VER=v0.13.6 --build-arg MAXMIND_LICENSE_KEY=${MAXMIND_LICENSE_KEY} -f Dockerfile .")
             image.push()
             image.push(base)
             image.push(major)
@@ -75,7 +76,7 @@ pipeline {
           def minor = gitbranch + '-' + versions[0] + '.' + versions[1]
           def patch = gitbranch + '-' + version.trim()
           docker.withRegistry('', registryCredential) {
-            def image = docker.build("$registry:$gitbranch", "--build-arg BASEIMAGE_VERSION=3.8 --build-arg RTORRENT_VER=v0.9.7 --build-arg LIBTORRENT_VER=v0.13.7 -f Dockerfile .")
+            def image = docker.build("$registry:$gitbranch", "--build-arg BASEIMAGE_VERSION=3.8 --build-arg RTORRENT_VER=v0.9.7 --build-arg LIBTORRENT_VER=v0.13.7 --build-arg MAXMIND_LICENSE_KEY=${MAXMIND_LICENSE_KEY} -f Dockerfile .")
             image.push()
             image.push(base)
             image.push(major)
@@ -99,7 +100,7 @@ pipeline {
           def minor = gitbranch + '-' + versions[0] + '.' + versions[1]
           def patch = gitbranch + '-' + version.trim()
           docker.withRegistry('', registryCredential) {
-            def image = docker.build("$registry:$gitbranch",  "--build-arg BASEIMAGE_VERSION=3.10 --build-arg RTORRENT_VER=v0.9.8 --build-arg LIBTORRENT_VER=v0.13.8 -f Dockerfile .")
+            def image = docker.build("$registry:$gitbranch",  "--build-arg BASEIMAGE_VERSION=3.10 --build-arg RTORRENT_VER=v0.9.8 --build-arg LIBTORRENT_VER=v0.13.8 --build-arg MAXMIND_LICENSE_KEY=${MAXMIND_LICENSE_KEY} -f Dockerfile .")
             image.push()
             image.push(base)
             image.push(major)
