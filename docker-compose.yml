@@ -1,26 +1,24 @@
 version: '2'
 services:
     rutorrent-develop:
-      image: romancin/rutorrent-flood:0.9.8
-      container_name: rutorrent-flood
+      image: romancin/rutorrent-flood:develop
+      container_name: rutorrent-flood-develop
       networks:
         - default
       tty: true
       volumes:
-        - /share/Container/rutorrent-flood:/config
-        - /share/Container/rutorrent-flood/downloads:/downloads
+        - /share/Container/rutorrent-flood-develop:/config
+        - /share/Container/rutorrent-flood-develop/downloads:/downloads
       environment:
         - PUID=0
         - PGID=0
         - TZ=Europe/Madrid
         - CREATE_SUBDIR_BY_TRACKERS=NO
+        - SSL_ENABLED=YES
         - RT_TOKEN=
         - RT_MASTERS=
       ports:
-        - "7443:443"
+        - "8880:80"
+        - "8443:443"
         - "32316:52316"
-        - "3002:3000"
-networks:
-  default:
-    external:
-      name: main_network
+        - "3333:3000"

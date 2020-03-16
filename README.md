@@ -28,8 +28,8 @@ rTelegram is added, that will allow you to control your rtorrent instance from T
 Tested and working on Synology and QNAP, but should work on any x86_64 devices.
 
 ## Instructions
-
-- Map any local port to 443 for SSL rutorrent access (Default username/password is admin/admin) 
+- Map any local port to 80 for rutorrent access (Default username/password is admin/admin)
+- Map any local port to 443 for SSL rutorrent access if SSL_ENABLED=yes (Default username/password is admin/admin)
 - Map any local port to 51415 for rtorrent 
 - Map any local port to 3000 for SSL flood access
 - Map a local volume to /config (Stores configuration data, including rtorrent session directory. Consider this on SSD Disk) 
