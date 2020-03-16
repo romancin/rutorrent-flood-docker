@@ -1,7 +1,7 @@
 #!/usr/bin/with-contenv bash
 
 # Sanitize variables
-SANED_VARS=( CREATE_SUBDIR_BY_TRACKERS )
+SANED_VARS=( CREATE_SUBDIR_BY_TRACKERS SSL_ENABLED )
 for i in "${SANED_VARS[@]}"
 do
   export echo "$i"="${!i//\"/}"
@@ -41,7 +41,12 @@ cd /defaults/rutorrent-conf || exit
 cd "${PREV_DIR}" || exit
 
 [[ ! -e /config/nginx/nginx.conf ]] && \
-	cp /defaults/nginx.conf /config/nginx/nginx.conf
+    if [ "$SSL_ENABLED" == "yes" ]
+	then 
+	  cp /defaults/nginx_ssl.conf /config/nginx/nginx.conf
+	else
+	  cp /defaults/nginx.conf /config/nginx/nginx.conf
+	fi
 
 [[ ! -e /config/nginx/.htpasswd ]] && \
 	cp /defaults/.htpasswd /config/nginx/.htpasswd
