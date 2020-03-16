@@ -1,5 +1,13 @@
 #!/usr/bin/with-contenv bash
 
+# Sanitize variables
+SANED_VARS=( SSL_ENABLED )
+for i in "${SANED_VARS[@]}"
+do
+  export echo "$i"="${!i//\"/}"
+  export echo "$i"="$(echo "${!i}" | tr '[:upper:]' '[:lower:]')"
+done
+
 # make folders
 mkdir -p /config/tmp /detach_sess
 
@@ -9,7 +17,13 @@ mkdir -p /config/tmp /detach_sess
 [[ ! -f /config/.irssi/config ]] && cp /defaults/config.irssi /config/.irssi/config
 [[ ! -f /config/.autodl/autodl.cfg ]] && cp /defaults/autodl.cfg /config/.autodl/autodl.cfg
 [[ ! -f /usr/share/webapps/rutorrent/plugins/autodl-irssi/conf.php ]] && cp /defaults/conf.php /usr/share/webapps/rutorrent/plugins/autodl-irssi/conf.php
-[[ ! -f /config/flood/config.js ]] && cp /defaults/config.js /config/flood/config.js
+[[ ! -f /config/flood/config.js ]] && 
+    if [ "$SSL_ENABLED" == "yes" ]
+	then 
+	  cp /defaults/config_ssl.js /config/flood/config.js
+	else
+	  cp /defaults/config.js /config/flood/config.js
+	fi
 [[ ! -L /usr/flood/config.js ]] && ln -s /config/flood/config.js /usr/flood/config.js && sed -i -e "s|<FLOOD_SECRET>|$FLOOD_SECRET|g" /config/flood/config.js && sed -i -e "s|<CONTEXT_PATH>|$CONTEXT_PATH|g" /config/flood/config.js
 
 # set perms

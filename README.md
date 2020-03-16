@@ -28,8 +28,8 @@ rTelegram is added, that will allow you to control your rtorrent instance from T
 Tested and working on Synology and QNAP, but should work on any x86_64 devices.
 
 ## Instructions
-
-- Map any local port to 443 for SSL rutorrent access (Default username/password is admin/admin) 
+- Map any local port to 80 for rutorrent access (Default username/password is admin/admin)
+- Map any local port to 443 for SSL rutorrent access if SSL_ENABLED=yes (Default username/password is admin/admin)
 - Map any local port to 51415 for rtorrent 
 - Map any local port to 3000 for SSL flood access
 - Map a local volume to /config (Stores configuration data, including rtorrent session directory. Consider this on SSD Disk) 
@@ -108,6 +108,7 @@ Remember editing `/config/rtorrent/rtorrent.rc` with your own settings, especial
 | `-e PGID=1000` | for GroupID - see below for explanation |
 | `-e TZ=Europe/London` | Specify a timezone to use EG Europe/London. |
 | `-e CREATE_SUBDIR_BY_TRACKERS=YES` | YES to create downloads/watch subfolder for trackers (OLD BEHAVIOUR) or NO to create only completed/watch folder (DEFAULT) |
+| `-e SSL_ENABLED=YES` | YES to enable SSL in nginx/flood or NO to not use it (DEFAULT) |
 | `-e RT_TOKEN=your_bot_token` | for your Telegram BOT Token - [see rtelegram documentation for instructions](https://github.com/pyed/rtelegram/wiki/Getting-started). If not used, rtelegram won't start on boot. |
 | `-e RT_MASTERS=your_real_telegram_username` | for your Telegram real username - [see rtelegram documentation for instructions](https://github.com/pyed/rtelegram/wiki/Getting-started). If not used, rtelegram won't start on boot. |
 
@@ -125,6 +126,8 @@ In this instance `PUID=1000` and `PGID=1000`, to find yours use `id user` as bel
 ```
 
 ## Changelog
+v4.0.0 (16/03/2020): Added variable for optional SSL configuration.
+
 v3.0.0 (13/03/2020): Updated to Alpine 3.11 (rtorrent 0.9.8 only). Changed to new maxmind database.
 
 v2.2.1 (20/09/2019): Unified Dockerfile and Jenkinsfile for easier image code management
