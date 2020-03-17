@@ -205,6 +205,8 @@ cd /tmp/mediainfo/MediaInfo/Project/GNU/CLI && \
         make install && \
 # compile and install rtelegram
 GOPATH=/usr go get -u github.com/pyed/rtelegram && \
+# create libressl link to openssl for old alpine images
+if [ "$RTORRENT_VER" == "v0.9.4" ] || [ "$RTORRENT_VER" == "v0.9.6" ] || [ "$RTORRENT_VER" == "0.9.7" ]; then ln -s /usr/bin/openssl /usr/bin/libressl; fi && \
 # cleanup
 apk del --purge \
         build-dependencies && \
