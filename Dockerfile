@@ -215,6 +215,7 @@ rm -rf \
         /tmp/*
 
 # install flood webui
+RUN mkdir /usr/flood && chmod abc:abc /usr/flood
 RUN apk add --no-cache \
       python \
       nodejs \
@@ -222,7 +223,6 @@ RUN apk add --no-cache \
     apk add --no-cache --virtual=build-dependencies \
       build-base
 USER abc
-RUN mkdir /usr/flood
 WORKDIR /usr/flood
 RUN git clone https://github.com/jfurrow/flood . && \
     cp config.template.js config.js && \
