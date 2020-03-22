@@ -23,7 +23,7 @@ ENV LD_LIBRARY_PATH=/usr/local/lib
 ENV CONTEXT_PATH=/
 ENV CREATE_SUBDIR_BY_TRACKERS="no"
 ENV SSL_ENABLED="no"
-ENV NPM_CONFIG_PREFIX=/home/abc/.npm-global
+ENV NPM_CONFIG_PREFIX=/usr/flood/.npm-global
 
 # run commands
 RUN NB_CORES=${BUILD_CORES-`getconf _NPROCESSORS_CONF`} && \
