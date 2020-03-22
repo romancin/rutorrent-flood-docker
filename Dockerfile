@@ -215,23 +215,26 @@ rm -rf \
         /tmp/*
 
 # install flood webui
-RUN  apk add --no-cache \
-       python \
-       nodejs \
-       nodejs-npm && \
-     apk add --no-cache --virtual=build-dependencies \
-       build-base && \
-     mkdir /usr/flood && \
-     cd /usr/flood && \
-     git clone https://github.com/jfurrow/flood . && \
-     cp config.template.js config.js && \
-     npm install && \
-     npm cache clean --force && \
-     npm run build && \
-     npm prune --production && \
-     rm config.js && \
-     apk del --purge build-dependencies && \
-     ln -s /usr/local/bin/mediainfo /usr/bin/mediainfo
+RUN apk add --no-cache \
+      python \
+      nodejs \
+      nodejs-npm && \
+    apk add --no-cache --virtual=build-dependencies \
+      build-base && \
+    mkdir /usr/flood && \
+    cd /usr/flood && \
+    git clone https://github.com/jfurrow/flood . && \
+    cp config.template.js config.js && \
+    npm config set unsafe-perm true && \
+    npm install --prefix /usr/flood && \
+    npm cache clean --force && \
+    npm run build && \
+    npm prune --production && \
+    rm config.js && \
+    apk del --purge build-dependencies && \
+    rm -rf /root \
+           /tmp/* && \
+    ln -s /usr/local/bin/mediainfo /usr/bin/mediainfo
 
 # add local files
 COPY root/ /

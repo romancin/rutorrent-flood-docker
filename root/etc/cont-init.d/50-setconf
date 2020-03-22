@@ -29,5 +29,5 @@ mkdir -p /config/tmp /detach_sess
 # set perms
 chown abc:abc -R /config /detach_sess
 chown abc:abc -R /usr/share/webapps/rutorrent
-chown abc:abc /downloads
+chown abc:abc -R /downloads
 chmod 755 /usr/local/bin/curl
