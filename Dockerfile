@@ -222,7 +222,7 @@ RUN apk add --no-cache \
     apk add --no-cache --virtual=build-dependencies \
       build-base && \
     mkdir /usr/flood && \
-    cd/usr/flood && \
+    cd /usr/flood && \
     git clone https://github.com/jfurrow/flood . && \
     cp config.template.js config.js && \
     npm config set unsafe-perm true && \
