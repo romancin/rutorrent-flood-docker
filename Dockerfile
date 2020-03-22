@@ -23,7 +23,6 @@ ENV LD_LIBRARY_PATH=/usr/local/lib
 ENV CONTEXT_PATH=/
 ENV CREATE_SUBDIR_BY_TRACKERS="no"
 ENV SSL_ENABLED="no"
-ENV NPM_CONFIG_PREFIX=/usr/flood/.npm-global
 
 # run commands
 RUN NB_CORES=${BUILD_CORES-`getconf _NPROCESSORS_CONF`} && \
@@ -216,18 +215,18 @@ rm -rf \
         /tmp/*
 
 # install flood webui
-RUN mkdir /usr/flood && chown abc:abc /usr/flood
 RUN apk add --no-cache \
       python \
       nodejs \
       nodejs-npm && \
     apk add --no-cache --virtual=build-dependencies \
-      build-base
-USER abc
-WORKDIR /usr/flood
-RUN git clone https://github.com/jfurrow/flood . && \
+      build-base && \
+    mkdir /usr/flood && \
+    cd/usr/flood && \
+    git clone https://github.com/jfurrow/flood . && \
     cp config.template.js config.js && \
-    npm install && \
+    npm config set unsafe-perm true && \
+    npm install --prefix /usr/flood && \
     npm cache clean --force && \
     npm run build && \
     npm prune --production && \
