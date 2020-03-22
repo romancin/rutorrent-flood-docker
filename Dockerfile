@@ -220,10 +220,11 @@ RUN  apk add --no-cache \
        nodejs \
        nodejs-npm && \
      apk add --no-cache --virtual=build-dependencies \
-       build-base && \
-     mkdir /usr/flood && \
-     cd /usr/flood && \
-     git clone https://github.com/jfurrow/flood . && \
+       build-base
+USER node
+RUN mkdir /usr/flood
+WORKDIR /usr/flood
+RUN  git clone https://github.com/jfurrow/flood . && \
      cp config.template.js config.js && \
      npm install && \
      npm cache clean --force && \
