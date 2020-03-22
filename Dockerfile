@@ -215,7 +215,7 @@ rm -rf \
         /tmp/*
 
 # install flood webui
-RUN mkdir /usr/flood && chmod abc:abc /usr/flood
+RUN mkdir /usr/flood && chown abc:abc /usr/flood
 RUN apk add --no-cache \
       python \
       nodejs \
