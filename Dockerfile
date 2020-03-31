@@ -140,8 +140,9 @@ cd /usr/share/webapps/rutorrent/plugins/ && \
 git clone https://github.com/Gyran/rutorrent-pausewebui pausewebui && \
 git clone https://github.com/Gyran/rutorrent-ratiocolor ratiocolor && \
 sed -i 's/changeWhat = "cell-background";/changeWhat = "font";/g' /usr/share/webapps/rutorrent/plugins/ratiocolor/init.js && \
-git clone https://github.com/Gyran/rutorrent-instantsearch instantsearch && \
-git clone https://github.com/xombiemp/rutorrentMobile && \
+git clone https://github.com/Micdu70/rutorrent-instantsearch instantsearch && \
+git clone https://github.com/xombiemp/rutorrentMobile mobile && \
+rm -rf ipad && \
 git clone https://github.com/dioltas/AddZip && \
 git clone https://github.com/Micdu70/geoip2-rutorrent geoip2 && \
 rm -rf geoip && \
