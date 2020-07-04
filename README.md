@@ -126,6 +126,8 @@ In this instance `PUID=1000` and `PGID=1000`, to find yours use `id user` as bel
 ```
 
 ## Changelog
+v4.0.4 (04/07/2020): Updated to Alpine 3.11 and latest package versions
+
 v4.0.2 (31/03/2020): Corrected rutorrentMobile plugin installation (Thanks @jorritsmit!!) and fixed instantsearch plugin
 
 v4.0.0 (16/03/2020): Added variable for optional SSL configuration.
