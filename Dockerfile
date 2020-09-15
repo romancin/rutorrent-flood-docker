@@ -31,6 +31,7 @@ RUN NB_CORES=${BUILD_CORES-`getconf _NPROCESSORS_CONF`} && \
         ca-certificates \
         fcgi \
         ffmpeg \
+	filebot \
         geoip \
         geoip-dev \
         gzip \
