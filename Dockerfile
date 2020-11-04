@@ -169,7 +169,7 @@ echo ";extension=geoip.so" >> /etc/php7/php.ini && \
         cpanm HTML::Entities XML::LibXML JSON JSON::XS && \
 # compile xmlrpc-c
 cd /tmp && \
-svn checkout http://svn.code.sf.net/p/xmlrpc-c/code/stable xmlrpc-c && \
+git clone https://github.com/mirror/xmlrpc-c.git
 cd /tmp/xmlrpc-c && \
 ./configure --with-libwww-ssl --disable-wininet-client --disable-curl-client --disable-libwww-client --disable-abyss-server --disable-cgi-server && make -j ${NB_CORES} && make install && \
 # compile libtorrent
