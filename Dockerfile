@@ -229,7 +229,7 @@ RUN apk add --no-cache \
       build-base && \
     mkdir /usr/flood && \
     cd /usr/flood && \
-    git clone https://github.com/jfurrow/flood . && \
+    git clone https://github.com/jesec/flood.git .&& \
     cp config.template.js config.js && \
     npm config set unsafe-perm true && \
     npm install --prefix /usr/flood && \
