@@ -70,6 +70,7 @@ RUN NB_CORES=${BUILD_CORES-`getconf _NPROCESSORS_CONF`} && \
         php7-zip \
         php7-bcmath \
         php7-session \
+        php7-curl \
         python \
         python3 && \
 # install build packages
@@ -145,6 +146,9 @@ git clone https://github.com/Micdu70/rutorrent-instantsearch instantsearch && \
 git clone https://github.com/xombiemp/rutorrentMobile mobile && \
 rm -rf ipad && \
 git clone https://github.com/dioltas/AddZip && \
+git clone https://github.com/radonthetyrant/rutorrent-discord  && \
+mv rutorrent-discord/* . && \
+rm -rf rutorrent-discord && \
 git clone https://github.com/Micdu70/geoip2-rutorrent geoip2 && \
 rm -rf geoip && \
 mkdir -p /usr/share/GeoIP && \

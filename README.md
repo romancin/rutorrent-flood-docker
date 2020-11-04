@@ -126,9 +126,11 @@ In this instance `PUID=1000` and `PGID=1000`, to find yours use `id user` as bel
 ```
 
 ## Changelog
+v4.2.0 (04/11/2020): Added Discord plugin installation.
+
 v4.1.0 (10/09/2020): Fixed PluginCheckPort plugin. You will no longer see 'Bad response from server: (500 [error,initportcheck])' error message in ruTorrent.
 
-v4.0.4 (04/07/2020): Updated to Alpine 3.11 and latest package versions
+v4.0.4 (04/07/2020): Updated to Alpine 3.11 and latest package versions.
 
 v4.0.2 (31/03/2020): Corrected rutorrentMobile plugin installation (Thanks @jorritsmit!!) and fixed instantsearch plugin
 
