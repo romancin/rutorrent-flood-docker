@@ -10,8 +10,8 @@ ARG BUILD_CORES
 LABEL build_version="Romancin version:- ${VERSION} Build-date:- ${BUILD_DATE}"
 
 # package version
-ARG MEDIAINF_VER="20.03"
-ARG CURL_VER="7.71.0"
+ARG MEDIAINF_VER="20.09"
+ARG CURL_VER="7.73.0"
 ARG GEOIP_VER="1.1.1"
 ARG RTORRENT_VER
 ARG LIBTORRENT_VER
@@ -70,6 +70,7 @@ RUN NB_CORES=${BUILD_CORES-`getconf _NPROCESSORS_CONF`} && \
         php7-zip \
         php7-bcmath \
         php7-session \
+        php7-curl \
         python \
         python3 && \
 # install build packages
@@ -145,6 +146,9 @@ git clone https://github.com/Micdu70/rutorrent-instantsearch instantsearch && \
 git clone https://github.com/xombiemp/rutorrentMobile mobile && \
 rm -rf ipad && \
 git clone https://github.com/dioltas/AddZip && \
+git clone https://github.com/radonthetyrant/rutorrent-discord  && \
+mv rutorrent-discord/* . && \
+rm -rf rutorrent-discord && \
 git clone https://github.com/Micdu70/geoip2-rutorrent geoip2 && \
 rm -rf geoip && \
 mkdir -p /usr/share/GeoIP && \
@@ -165,8 +169,8 @@ echo ";extension=geoip.so" >> /etc/php7/php.ini && \
         cpanm HTML::Entities XML::LibXML JSON JSON::XS && \
 # compile xmlrpc-c
 cd /tmp && \
-svn checkout http://svn.code.sf.net/p/xmlrpc-c/code/stable xmlrpc-c && \
-cd /tmp/xmlrpc-c && \
+git clone https://github.com/mirror/xmlrpc-c.git && \
+cd /tmp/xmlrpc-c/stable && \
 ./configure --with-libwww-ssl --disable-wininet-client --disable-curl-client --disable-libwww-client --disable-abyss-server --disable-cgi-server && make -j ${NB_CORES} && make install && \
 # compile libtorrent
 if [ "$RTORRENT_VER" == "v0.9.4" ] || [ "$RTORRENT_VER" == "v0.9.6" ]; then apk add -X http://dl-cdn.alpinelinux.org/alpine/v3.6/main -U cppunit-dev==1.13.2-r1 cppunit==1.13.2-r1; fi && \
@@ -225,8 +229,7 @@ RUN apk add --no-cache \
       build-base && \
     mkdir /usr/flood && \
     cd /usr/flood && \
-    git clone https://github.com/jfurrow/flood . && \
-    cp config.template.js config.js && \
+    git clone https://github.com/jesec/flood.git .&& \
     npm config set unsafe-perm true && \
     npm install --prefix /usr/flood && \
     npm cache clean --force && \
