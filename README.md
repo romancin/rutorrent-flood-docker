@@ -40,6 +40,7 @@ In order to change rutorrent web access password execute this inside container:
 - `sh -c "libressl passwd -apr1 >> /config/nginx/.htpasswd"`
 
 **IMPORTANT**
+- **Old rtorrent versions are now deprecated since version 4.2.0 of the image. The older ones should remain available for use until docker hub deletes them**
 - In newer versions of flood it is needed to specify how is the connection to rtorrent established in the first user creation window. Specify "Unix Socket" type and "/run/php/.rtorrent.sock" in the rTorrent Socket field.
 - Since v1.0.0 version, rtorrent.rc file has changed completely, so rename it before starting with the new image the first time. After first run, add the changes you need to this config file. It is on <YOUR_MAPPED_FOLDER>/rtorrent directory.
 - Since v2.0.0 version, config.php of rutorrent has added new utilities, so rename it before starting with the new image the first time. After first run, add the changes you need to this config file. It is on <YOUR_MAPPED_FOLDER>/rutorrent/settings directory.
@@ -59,7 +60,7 @@ docker run -d --name=rutorrent-flood \
 romancin/rutorrent-flood:latest
 ```
 
-For rtorrent 0.9.7 version:
+For rtorrent 0.9.7 version **DEPRECATED**:
 
  ```bash
 docker run -d --name=rutorrent-flood \
@@ -72,7 +73,7 @@ docker run -d --name=rutorrent-flood \
 romancin/rutorrent-flood:0.9.7
 ```
 
-For rtorrent 0.9.6 version:
+For rtorrent 0.9.6 version **DEPRECATED**:
 
 ```bash
 docker run -d --name=rutorrent-flood \
@@ -85,7 +86,7 @@ docker run -d --name=rutorrent-flood \
 romancin/rutorrent-flood:0.9.6
 ```
 
-For rtorrent 0.9.4 version:
+For rtorrent 0.9.4 version **DEPRECATED**:
 
 ```bash
 docker run -d --name=rutorrent-flood \
