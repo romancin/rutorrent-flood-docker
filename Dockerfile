@@ -230,7 +230,6 @@ RUN apk add --no-cache \
     mkdir /usr/flood && \
     cd /usr/flood && \
     git clone https://github.com/jesec/flood.git .&& \
-    cp config.template.js config.js && \
     npm config set unsafe-perm true && \
     npm install --prefix /usr/flood && \
     npm cache clean --force && \
