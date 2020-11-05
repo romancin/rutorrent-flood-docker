@@ -170,7 +170,7 @@ echo ";extension=geoip.so" >> /etc/php7/php.ini && \
 # compile xmlrpc-c
 cd /tmp && \
 git clone https://github.com/mirror/xmlrpc-c.git && \
-cd /tmp/xmlrpc-c && \
+cd /tmp/xmlrpc-c/stable && \
 ./configure --with-libwww-ssl --disable-wininet-client --disable-curl-client --disable-libwww-client --disable-abyss-server --disable-cgi-server && make -j ${NB_CORES} && make install && \
 # compile libtorrent
 if [ "$RTORRENT_VER" == "v0.9.4" ] || [ "$RTORRENT_VER" == "v0.9.6" ]; then apk add -X http://dl-cdn.alpinelinux.org/alpine/v3.6/main -U cppunit-dev==1.13.2-r1 cppunit==1.13.2-r1; fi && \
