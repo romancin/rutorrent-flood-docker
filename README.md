@@ -127,6 +127,8 @@ In this instance `PUID=1000` and `PGID=1000`, to find yours use `id user` as bel
 ```
 
 ## Changelog
+v5.0.1 (07/11/2020): Disabled rar in filemanager plugin because it is not available in Alpine.
+
 v5.0.0 (07/11/2020): Rebased image to use rutorrent-docker image as base for building flood over it. Now the image is based on Alpine 3.12.
 
 v4.2.0 (04/11/2020): Added Discord plugin installation, changed XMLRCP-C repository to the mirror in Github and change Flood to currently most active fork.
