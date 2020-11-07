@@ -28,9 +28,9 @@ RUN NB_CORES=${BUILD_CORES-`getconf _NPROCESSORS_CONF`} && \
     mkdir /usr/flood && \
     cd /usr/flood && \
     git clone https://github.com/jesec/flood.git .&& \
-    npm config set unsafe-perm true && \
+    npm set unsafe-perm true && \
     npm install --prefix /usr/flood && \
-    npm cache clean --force && \
+    cp config.cli.js config.js && \
     npm run build && \
     npm prune --production && \
     rm config.js && \
