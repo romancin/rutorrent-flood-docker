@@ -13,12 +13,6 @@ const CONFIG = {
   maxHistoryStates: 30,
   pollInterval: 1000 * 5,
   secret: 'flood',
-  scgi: {
-    host: 'localhost',
-    port: 5000,
-    socket: true,
-    socketPath: '/run/php/.rtorrent.sock'
-  },
   ssl: false,
   sslKey: '/config/nginx/key.pem',
   sslCert: '/config/nginx/cert.pem',
