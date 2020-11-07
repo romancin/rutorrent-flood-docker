@@ -1,0 +1,15 @@
+#!/usr/bin/with-contenv bash
+
+# copy config files/set links etc...
+[[ ! -f /config/flood/config.js ]] && 
+    if [ "$SSL_ENABLED" == "yes" ]
+	then 
+	  cp /defaults/config_ssl.js /config/flood/config.js
+	else
+	  cp /defaults/config.js /config/flood/config.js
+	fi
+[[ ! -L /usr/flood/config.js ]] && ln -s /config/flood/config.js /usr/flood/config.js && sed -i -e "s|<FLOOD_SECRET>|$FLOOD_SECRET|g" /config/flood/config.js && sed -i -e "s|<CONTEXT_PATH>|$CONTEXT_PATH|g" /config/flood/config.js
+
+# set perms
+chown abc:abc -R /config
+
