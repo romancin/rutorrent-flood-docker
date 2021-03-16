@@ -6,7 +6,7 @@ A repository for creating a docker container including rtorrent with rutorrent a
 
 Latest version:
 
-![Docker Image Version (latest semver)](https://img.shields.io/docker/v/romancin/rutorrent-flood) ![docker size](https://img.shields.io/docker/image-size/romancin/rutorrent-flood) 
+![Docker Image Version (latest semver)](https://img.shields.io/docker/v/romancin/rutorrent-flood/0.9.8) ![docker size](https://img.shields.io/docker/image-size/romancin/rutorrent/0.9.8) 
 
 You can invite me a beer if you want ;)
 
