@@ -2,9 +2,11 @@
 
 A repository for creating a docker container including rtorrent with rutorrent and flood interfaces.
 
-[![](https://images.microbadger.com/badges/version/romancin/rutorrent-flood.svg)](https://microbadger.com/images/romancin/rutorrent-flood "Docker image version")
-[![](https://images.microbadger.com/badges/image/romancin/rutorrent-flood.svg)](https://microbadger.com/images/romancin/rutorrent-flood "Docker image size")
-[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=X2CT2SWQCP74U)
+![docker pulls](https://img.shields.io/docker/pulls/romancin/rutorrent-flood.svg) ![docker stars](https://img.shields.io/docker/stars/romancin/rutorrent-flood.svg) [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=X2CT2SWQCP74U)
+
+Latest version:
+
+![Docker Image Version (latest semver)](https://img.shields.io/docker/v/romancin/rutorrent-flood) ![docker size](https://img.shields.io/docker/image-size/romancin/rutorrent-flood) 
 
 You can invite me a beer if you want ;)
 
