@@ -25,10 +25,10 @@ RUN NB_CORES=${BUILD_CORES-`getconf _NPROCESSORS_CONF`} && \
       nodejs-npm && \
     apk add --no-cache --virtual=build-dependencies \
       build-base && \
-    mkdir /srv/flood && \
-    cd /srv/flood && \
+    mkdir /usr/flood && \
+    cd /usr/flood && \
     git clone https://github.com/jesec/flood.git .&& \
-    npm install --prefix /srv/flood && \
+    npm install --prefix /usr/flood && \
     npm run build && \
     npm prune --production && \
     apk del --purge build-dependencies && \
