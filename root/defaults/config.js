@@ -2,7 +2,7 @@ const CONFIG = {
   baseURI: '/',
   dbCleanInterval: 1000 * 60 * 60,
   dbPath: '/config/flood-db/',
-  disableUsersAndAuth: false,
+  auth: 'default',
   configUser: {
     client: 'rTorrent',
     type: 'socket',
