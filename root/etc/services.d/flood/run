@@ -1,6 +1,11 @@
 #!/usr/bin/with-contenv bash
 
 cd /usr/flood || exit
+export HOME=/config
+export EXTRA_ARGS=
+if [ -f "/config/flood/args.sh" ]; then
+. /config/flood/args.sh
+fi
 
 exec \
-	s6-setuidgid abc npm run start -- --host 0.0.0.0 --port 3000
+	s6-setuidgid abc npm run start --rundir=/usr/flood -- --host 0.0.0.0 --port 3000 --rtsocket "/run/php/.rtorrent.sock" $EXTRA_ARGS
