@@ -2,9 +2,11 @@
 
 A repository for creating a docker container including rtorrent with rutorrent and flood interfaces.
 
-[![](https://images.microbadger.com/badges/version/romancin/rutorrent-flood.svg)](https://microbadger.com/images/romancin/rutorrent-flood "Docker image version")
-[![](https://images.microbadger.com/badges/image/romancin/rutorrent-flood.svg)](https://microbadger.com/images/romancin/rutorrent-flood "Docker image size")
-[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=X2CT2SWQCP74U)
+![docker pulls](https://img.shields.io/docker/pulls/romancin/rutorrent-flood.svg) ![docker stars](https://img.shields.io/docker/stars/romancin/rutorrent-flood.svg) [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=X2CT2SWQCP74U)
+
+Latest version:
+
+![Docker Image Version (latest semver)](https://img.shields.io/docker/v/romancin/rutorrent-flood/0.9.8) ![docker size](https://img.shields.io/docker/image-size/romancin/rutorrent/0.9.8) 
 
 You can invite me a beer if you want ;)
 
@@ -127,6 +129,8 @@ In this instance `PUID=1000` and `PGID=1000`, to find yours use `id user` as bel
 ```
 
 ## Changelog
+v6.0.0 (11/07/2021): Updated to Alpine 3.14.
+
 v5.0.1 (07/11/2020): Disabled rar in filemanager plugin because it is not available in Alpine.
 
 v5.0.0 (07/11/2020): Rebased image to use rutorrent-docker image as base for building flood over it. Now the image is based on Alpine 3.12.
